@@ -1,0 +1,28 @@
+<div class="container">
+  <nav class="m-2 p-2 border ">
+    <button class="bnt btn btn-outline" (click)="handleEtape1()" >Etape 1</button>
+    <button  class="bnt btn btn-outline" (click)="handleEtape2()">Etape 2</button>
+  </nav>
+
+  <div>
+    <div class="card">
+      <div class="card-header">Mon Dossier</div>
+      <div class="card-body">
+
+        <form [formGroup]="candidatFormGroup" (ngSubmit)="enregistrer()">
+          <div class="mb-1">
+            <label class="form-label">Nom</label>
+            <input type="text" formControlName="nom" class="form-control">
+          </div>
+
+          <button class="btn btn-primary" type="submit">Enregistrer</button>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+
+
+</div>
