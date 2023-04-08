@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container" xmlns="http://www.w3.org/1999/html">
   <nav class="m-2 p-2 border ">
-    <button class="bnt btn btn-outline" (click)="handleEtape1()">Etape 1</button>
+    <button class="bnt btn btn-outline">Etape 1</button>
     <button  class="bnt btn btn-outline"  routerLink="/candidat/MondDossier/etape2">Etape 2</button>
   </nav>
 
@@ -8,60 +8,24 @@
       <div class="card">
         <div class="card-header">Mon Dossier</div>
         <div class="card-body">
-          <form [formGroup]="candidatFormGroup" (ngSubmit)="handleEtape2()">
-            <div class="mb-1">
-              <label class="form-label">Nom</label>
-              <input type="text" formControlName="nom" class="form-control">
-            </div>
-            <div class="mb-1">
-              <label class="form-label">Prénom</label>
-              <input type="text" formControlName="prenom" class="form-control">
-            </div> <div class="mb-3">
-              <label class="form-label">CIN</label>
-              <input type="text" formControlName="cin" class="form-control">
-            </div>
-            <div class="mb-1">
-              <label class="form-label">CNE</label>
-              <input type="text" formControlName="cne" class="form-control">
-            </div>
+          <form (ngSubmit)="handleEtape2()" >
 
-            <div class="mb-1">
-              <div class="card flex justify-content-center">
-                <div class="flex flex-column gap-3">
-                  <div *ngFor="let category of categories" class="field-checkbox">
-                    <p-radioButton [inputId]="category.key" name="category" [value]="category" [(ngModel)]="selectedCategory"></p-radioButton>
-                    <label [for]="category.key" class="ml-2">{{ category.name }}</label>
-                  </div>
-                </div>
+
+            <div class="card flex justify-content-center border-0">
+              <div class="flex flex-column gap-2">
+                <label htmlFor="nom" class="me-lg-4">Nom</label>
+                <input pInputText id="nom" aria-describedby="username-help" class="me-lg-4" [(ngModel)]="username" />
+              </div><div class="flex flex-column gap-2">
+                <label htmlFor="Prenom" class="me-lg-4">Prenom</label>
+                <input pInputText id="Prenom" aria-describedby="username-help" class="me-lg-4" [(ngModel)]="Prenom" />
+              </div><div class="flex flex-column gap-2">
+                <label htmlFor="CIN" class="me-lg-4">CIN</label>
+                <input pInputText id="CIN" aria-describedby="username-help" class="me-lg-4" [(ngModel)]="CNI" />
+              </div><div class="flex flex-column gap-2">
+                <label htmlFor="CNE" class="me-lg-4">CNE</label>
+                <input pInputText id="CNE" aria-describedby="username-help" class="me-lg-4" [(ngModel)]="CNE" />
               </div>
             </div>
-
-
-            <div class="mb-1">
-              <label class="form-label">Date de Naissance</label>
-              <input type="date" formControlName="cne" class="form-control">
-            </div>
-            <div class="mb-1">
-              <label class="form-label">Ville</label>
-              <input type="text" formControlName="cne" class="form-control">
-            </div>
-            <div class="mb-1">
-              <label class="form-label">Adresse</label>
-              <input type="text" formControlName="cne" class="form-control">
-            </div>
-            <div class="mb-1">
-              <label class="form-label">Code postal</label>
-              <input type="text" formControlName="cne" class="form-control">
-            </div>
-            <div class="mb-1">
-              <label class="form-label">Email</label>
-              <input type="text" formControlName="cne" class="form-control">
-            </div>
-            <div class="mb-1">
-              <label class="form-label">Téléphone</label>
-              <input type="text" formControlName="cne" class="form-control">
-            </div>
-            <button class="btn btn-primary" type="submit">suivant</button>
 
           </form>
         </div>

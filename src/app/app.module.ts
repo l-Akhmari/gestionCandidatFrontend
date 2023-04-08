@@ -8,6 +8,7 @@ import { CandidatDossierComponent } from './candidat-dossier/candidat-dossier.co
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { CandidatDossierEtape2Component } from './candidat-dossier-etape2/candidat-dossier-etape2.component';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { InputTextModule } from 'primeng/inputtext';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     AppRoutingModule,
     ReactiveFormsModule,
     RadioButtonModule,
+    InputTextModule,
     FormsModule
   ],
   providers: [],
