@@ -5,14 +5,12 @@ import {CandidatDossierComponent} from "./candidat-dossier/candidat-dossier.comp
 import {CandidatDossierEtape2Component} from "./candidat-dossier-etape2/candidat-dossier-etape2.component";
 
 const routes: Routes = [
-  
+  {path:"", component:CondidatTemplateComponent},
   {path:"candidat", component:CondidatTemplateComponent,children:[
       {path:"monDossier",component:CandidatDossierComponent},
       {path:"MondDossier/etape2", component:CandidatDossierEtape2Component}
-
-
     ]},
- 
+
 ];
 
 @NgModule({

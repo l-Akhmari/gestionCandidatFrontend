@@ -1,31 +1,88 @@
 <div class="container" xmlns="http://www.w3.org/1999/html">
-  <nav class="m-2 p-2 border ">
-    <button class="bnt btn btn-outline">Etape 1</button>
-    <button  class="bnt btn btn-outline"  routerLink="/candidat/MondDossier/etape2">Etape 2</button>
-  </nav>
-
-    <div>
+    <div >
       <div class="card">
         <div class="card-header">Mon Dossier</div>
         <div class="card-body">
-          <form (ngSubmit)="handleEtape2()" >
+          <form (ngSubmit)="onSubmit()" >
+            <div class="card flex justify-content-center border-0 ">
 
 
-            <div class="card flex justify-content-center border-0">
-              <div class="flex flex-column gap-2">
-                <label htmlFor="nom" class="me-lg-4">Nom</label>
-                <input pInputText id="nom" aria-describedby="username-help" class="me-lg-4" [(ngModel)]="username" />
-              </div><div class="flex flex-column gap-2">
-                <label htmlFor="Prenom" class="me-lg-4">Prenom</label>
-                <input pInputText id="Prenom" aria-describedby="username-help" class="me-lg-4" [(ngModel)]="Prenom" />
-              </div><div class="flex flex-column gap-2">
-                <label htmlFor="CIN" class="me-lg-4">CIN</label>
-                <input pInputText id="CIN" aria-describedby="username-help" class="me-lg-4" [(ngModel)]="CNI" />
-              </div><div class="flex flex-column gap-2">
-                <label htmlFor="CNE" class="me-lg-4">CNE</label>
-                <input pInputText id="CNE" aria-describedby="username-help" class="me-lg-4" [(ngModel)]="CNE" />
+              <div class="flex flex-column gap-2 mb-3 col-8">
+                <label htmlFor="nom" class="me-lg-4 mb-1">Nom</label><br>
+                <input pInputText id="nom" aria-describedby="username-help" placeholder="Nom" class=" form-control" name="username" [(ngModel)]="username" />
               </div>
+              <div class="flex flex-column gap-2 mb-3 col-8">
+              <label htmlFor="Prenom" class="me-lg-4 mb-1">Prenom</label><br>
+              <input pInputText id="Prenom" aria-describedby="username-help" placeholder="Prenom" class="form-control" name="prenom" [(ngModel)]="Prenom" />
             </div>
+
+              <div class="flex flex-column gap-2 mb-3 col-8">
+                <label htmlFor="CIN" class="me-lg-4 mb-1">CIN</label><br>
+                <input pInputText id="CIN" aria-describedby="username-help" placeholder="CIN" class="form-control" name=""cni [(ngModel)]="CNI" />
+              </div>
+              <div class="flex flex-column gap-2 mb-3 col-8">
+              <label htmlFor="CNE" class="me-lg-4 mb-1">CNE</label><br>
+              <input pInputText id="CNE" aria-describedby="username-help" placeholder="CNE" class="form-control" name="cne" [(ngModel)]="CNE" />
+            </div>
+              <div class="flex flex-column gap-2 mb-3 col-8">
+                <label htmlFor="Email" class="me-lg-4 mb-1">Email</label><br>
+                <input pInputText id="Email" aria-describedby="username-help" placeholder="Email" class="form-control" name="email" [(ngModel)]="Email" />
+              </div>
+              <div class="flex flex-column gap-2 mb-3 col-8">
+                <label htmlFor="Adresse" class="me-lg-4 mb-1">Adresse</label><br>
+                <input pInputText id="Adresse" aria-describedby="username-help" placeholder="Adresse" class="form-control" name="adresse" [(ngModel)]="Adresse" />
+              </div>
+              <div class="flex flex-column gap-2 mb-3 col-8">
+                <label htmlFor="Téléphone" class="me-lg-4 mb-1">Téléphone</label><br>
+                <input pInputText id="Téléphone" aria-describedby="username-help" placeholder="Téléphone" class="form-control" name="telephone" [(ngModel)]="Telephone" />
+              </div>
+
+
+              <h4 class="align-items-center mt-3 mb-3 ms-5">a propos le(s) diplome(s)</h4>
+              <div class="d-flex ">
+                  <div formArrayName="diplome">
+                    <div *ngFor="let dipChild of dipArr.controls; let i = index" formControlName="{{i}}">
+
+                      <div class="form-row">
+                        <div class="form-group ">
+                          <label>Type de diplome</label>
+                          <input type="text" class="form-control"  formControlName="titre">
+                        </div>
+                        <div class="form-group ">
+                          <label>Specialte</label>
+                          <input type="text" class="form-control" formControlName="specialite">
+                        </div>
+                      </div>
+
+                      <div class="form-row">
+                        <div class="form-group ">
+                          <label>Anne d'obtention</label>
+                          <input type="date" class="form-control"  formControlName="dateObtention">
+                        </div>
+                        <div class="form-group ">
+                          <label>Etablissement</label>
+                          <input type="text" class="form-control"  formControlName="etablissement">
+                        </div>
+                      </div>
+                      <span (click)="removeDiploma(i)" class="btn btn-danger col-md-3 mt-3">-</span>
+                    </div>
+                    <span (click)="addDiploma()" class="btn btn-success col-md-3 me-2 mt-3">+</span>
+
+
+                  </div>
+
+              </div>
+
+
+
+
+
+
+
+
+            </div>
+           <br> <button type="submit" class="btn btn-primary btn">Enregistrer</button>
+
 
           </form>
         </div>
