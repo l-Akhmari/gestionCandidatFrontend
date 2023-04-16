@@ -1,0 +1,40 @@
+<div>
+  <p-table [value]="formations" sortField="formation.group"  [scrollable]="true" scrollHeight="1000px" rowGroupMode="subheader" groupRowsBy="formation.group" [tableStyle]="{'min-width': '60rem'}" >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Formations</th>
+      </tr>
+    </ng-template>
+<!--    <ng-template pTemplate="groupheader" let-formation>-->
+<!--      <tr pRowGroupHeader>-->
+<!--        <td colspan="5">-->
+<!--          <span class="font-bold ml-2">{{formation.group}}</span>-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--    </ng-template>-->
+    <ng-template pTemplate="body" let-formation let-group let-rowIndex="rowIndex">
+      <tr>
+        <td>
+          {{formation.label}}
+        </td>
+        <p-toast></p-toast>
+        <p-button label="S'inscrir" styleClass="p-button-outlined p-button-secondary" (click)="show()" class="p-button-success" ></p-button>
+      </tr>
+    </ng-template>
+
+
+  </p-table>
+
+</div>
+
+<!--    <ng-template let-formation let-group="group" let-i="index" >-->
+<!--      <div class="formation" [ngClass]="{'firstItemOfGroup': i === 0 || formations[i-1]?.group !== formation.group}">-->
+<!--        &lt;!&ndash; Utilisez ngClass pour ajouter une classe CSS pour le premier élément de chaque groupe &ndash;&gt;-->
+<!--        <div class="formationLabel">{{ formation.label }}</div>-->
+<!--        <div class="formationValue">{{ formation.value }}</div>-->
+<!--        <button (click)="onButtonClick(formation)">Button</button> &lt;!&ndash; Ajoutez un bouton à chaque élément et appelez une fonction sur le clic &ndash;&gt;-->
+<!--      </div>-->
+<!--    </ng-template>-->
+<!--    <ng-template let-group let-i="index" pTemplate="group"> &lt;!&ndash; Utilisez ng-template pour personnaliser l'apparence des groupes &ndash;&gt;-->
+<!--      <h3>{{ group }}</h3> &lt;!&ndash; Affiche le nom du groupe en tant qu'en-tête &ndash;&gt;-->
+<!--    </ng-template>-->
