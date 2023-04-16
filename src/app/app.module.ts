@@ -9,13 +9,19 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { CandidatDossierEtape2Component } from './candidat-dossier-etape2/candidat-dossier-etape2.component';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { InputTextModule } from 'primeng/inputtext';
+import { AccueilComponent } from './accueil/accueil.component';
+import {ButtonModule} from "primeng/button";
+import {TableModule} from "primeng/table";
+import { ToastModule } from 'primeng/toast';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     CondidatTemplateComponent,
     CandidatDossierComponent,
-    CandidatDossierEtape2Component
+    CandidatDossierEtape2Component,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +29,10 @@ import { InputTextModule } from 'primeng/inputtext';
     ReactiveFormsModule,
     RadioButtonModule,
     InputTextModule,
-    FormsModule
+    FormsModule,
+    ButtonModule,
+    TableModule,
+    ToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]
