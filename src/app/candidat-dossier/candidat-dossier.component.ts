@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validator, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import { diplome } from "../models/diplome.model";
@@ -12,48 +12,43 @@ import { diplome } from "../models/diplome.model";
 
 })
 
-export class CandidatDossierComponent implements OnInit{
+export class CandidatDossierComponent{
 
   candidatFormGroup : FormGroup=new FormGroup({
     username: new FormControl("",[Validators.required]),
-    Prenom: new FormControl("",[Validators.required]),
-    nom: new FormControl("",[Validators.required]),
-    CNI: new FormControl("",[Validators.required]),
-    Email: new FormControl("",[Validators.required]),
-    Telephone: new FormControl("",[Validators.required]),
-    Adresse: new FormControl("",[Validators.required]),
-    diplome: new FormArray([
-      new FormGroup({
-        titre: new FormControl("",[Validators.required]),
-        specialite : new FormControl("",[Validators.required]),
-        dateObtention :new FormControl("",[Validators.required]),
-        etablissement : new FormControl("",[Validators.required])
-
-        })
-    ])
+    prenom: new FormControl("",[Validators.required]),
+    cni: new FormControl("",[Validators.required]),
+    cne: new FormControl("",[Validators.required]),
+    email: new FormControl("",[Validators.required]),
+    telephone: new FormControl("",[Validators.required]),
+    adresse: new FormControl("",[Validators.required]),
+    diplome: new FormArray([this.getDiplomeFields()])
   });
-  get dipArr() {
-    return this.candidatFormGroup.get('diplome') as FormArray
+   dipArr() {
+    return this.candidatFormGroup.get('diplome') as FormArray;
   }
 
+  getDiplomeFields():FormGroup{
+     return new FormGroup({
+       titre: new FormControl("",[Validators.required]),
+       specialite : new FormControl("",[Validators.required]),
+       dateObtention :new FormControl("",[Validators.required]),
+       etablissement : new FormControl("",[Validators.required])
+
+     });
+
+  }
   addDiploma(){
 
-    const control=<FormArray>this.candidatFormGroup.controls['diplome'];
-    control.push(
-      new FormGroup({
-        titre: new FormControl("",[Validators.required]),
-        specialite : new FormControl("",[Validators.required]),
-        dateObtention :new FormControl("",[Validators.required]),
-        etablissement : new FormControl("",[Validators.required])
+    this.dipArr().push(this.getDiplomeFields());
+    console.log(this.candidatFormGroup);
 
-      })
-    );
   }
 
   removeDiploma(i:number){
-
-    const control=<FormArray>this.candidatFormGroup.controls['diplome'];
-    control.removeAt(i);
+    this.dipArr().removeAt(i);
+    // const control=<FormArray>this.candidatFormGroup.controls['diplome'];
+    // control.removeAt(i);
 
   }
 
@@ -65,17 +60,11 @@ export class CandidatDossierComponent implements OnInit{
   Email!: string;
   Telephone!:string;
   Adresse!:string;
-  diplome=new diplome();
   diplomes : diplome[] = [];
 
 
   constructor(private router : Router) {
   }
-  ngOnInit(): void {
-    this.diplome=new diplome();
-    this.diplomes.push(this.diplome);
-  }
-
 
 
   onSubmit() {
