@@ -1,18 +1,18 @@
 <div>
-  <p-table [value]="formations" sortField="formation.group"  [scrollable]="true" scrollHeight="1000px" rowGroupMode="subheader" groupRowsBy="formation.group" [tableStyle]="{'min-width': '60rem'}" >
+  <p-table [value]="formations" sortField="group"  [scrollable]="true" scrollHeight="1000px" rowGroupMode="subheader" groupRowsBy="group" [tableStyle]="{'min-width': '60rem'}" >
     <ng-template pTemplate="header">
       <tr>
-        <th>Formations</th>
+        <th>Formation Initiale</th>
       </tr>
     </ng-template>
-<!--    <ng-template pTemplate="groupheader" let-formation>-->
-<!--      <tr pRowGroupHeader>-->
-<!--        <td colspan="5">-->
-<!--          <span class="font-bold ml-2">{{formation.group}}</span>-->
-<!--        </td>-->
-<!--      </tr>-->
-<!--    </ng-template>-->
-    <ng-template pTemplate="body" let-formation let-group let-rowIndex="rowIndex">
+    <ng-template pTemplate="groupheader" let-formation >
+     <tr pRowGroupHeader>
+        <td colspan="5">
+          <span [ngStyle]="{ color: 'var(--highlight-text-color)'}" class="font-bold ml-2">{{formation.group}}</span>
+        </td>
+     </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-formation let-rowIndex="rowIndex" >
       <tr>
         <td>
           {{formation.label}}
@@ -26,15 +26,3 @@
   </p-table>
 
 </div>
-
-<!--    <ng-template let-formation let-group="group" let-i="index" >-->
-<!--      <div class="formation" [ngClass]="{'firstItemOfGroup': i === 0 || formations[i-1]?.group !== formation.group}">-->
-<!--        &lt;!&ndash; Utilisez ngClass pour ajouter une classe CSS pour le premier élément de chaque groupe &ndash;&gt;-->
-<!--        <div class="formationLabel">{{ formation.label }}</div>-->
-<!--        <div class="formationValue">{{ formation.value }}</div>-->
-<!--        <button (click)="onButtonClick(formation)">Button</button> &lt;!&ndash; Ajoutez un bouton à chaque élément et appelez une fonction sur le clic &ndash;&gt;-->
-<!--      </div>-->
-<!--    </ng-template>-->
-<!--    <ng-template let-group let-i="index" pTemplate="group"> &lt;!&ndash; Utilisez ng-template pour personnaliser l'apparence des groupes &ndash;&gt;-->
-<!--      <h3>{{ group }}</h3> &lt;!&ndash; Affiche le nom du groupe en tant qu'en-tête &ndash;&gt;-->
-<!--    </ng-template>-->
