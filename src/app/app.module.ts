@@ -13,6 +13,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 import {ButtonModule} from "primeng/button";
 import {TableModule} from "primeng/table";
 import { ToastModule } from 'primeng/toast';
+import {TabViewModule} from "primeng/tabview";
 
 
 @NgModule({
@@ -23,17 +24,18 @@ import { ToastModule } from 'primeng/toast';
     CandidatDossierEtape2Component,
     AccueilComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    RadioButtonModule,
-    InputTextModule,
-    FormsModule,
-    ButtonModule,
-    TableModule,
-    ToastModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        RadioButtonModule,
+        InputTextModule,
+        FormsModule,
+        ButtonModule,
+        TableModule,
+        ToastModule,
+        TabViewModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
