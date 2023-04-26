@@ -1,6 +1,6 @@
 <div class="container" xmlns="http://www.w3.org/1999/html">
     <div >
-      <div class="card">
+      <div class="card mt-3" >
         <div class="card-header">Mon Dossier</div>
         <div class="card-body">
           <form [formGroup]="candidatFormGroup" >
@@ -58,6 +58,30 @@
                           <label  class="mb-3">Etablissement</label>
                           <input type="text" class="form-control mb-3" formControlName="etablissement">
                         </div>
+                      <!--  <div class="form-group ">
+                          <label  class="mb-3">fichier</label>
+                          <input type="file" class="form-control mb-3" formControlName="file" >
+                        </div> -->
+                        <div class="form-group ">
+                          <label  class="mb-3">fichier example </label>
+                          <p-fileUpload formControlName="file" url="https://www.primefaces.org/cdn/api/upload.php" (onUpload)="onUpload($event)" [multiple]="false" accept="image/*" [maxFileSize]="1000000">
+                          </p-fileUpload>
+
+                        </div>
+
+
+                        <!--<div class="card flex justify-content-center">
+                          <p-toast></p-toast>
+                          <p-fileUpload formControlName="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" (onUpload)="onUpload($event)" [multiple]="true" accept="image/*" [maxFileSize]="1000000">
+                            <ng-template pTemplate="content">
+                              <ul *ngIf="uploadedFiles.length">
+                                <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
+                              </ul>
+                            </ng-template>
+                          </p-fileUpload>
+                        </div>-->
+
+
                         <button type="button" *ngIf="dipArr().length > 1" (click)="removeDiploma(i)"  class="btn btn-danger col-md-2 mt-3 me-2">-</button>
 
                       </div>

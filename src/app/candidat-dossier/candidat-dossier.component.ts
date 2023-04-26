@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validator, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import { diplome } from "../models/diplome.model";
+import {MessageService} from "primeng/api";
+import {HttpClient} from "@angular/common/http";
+import {candidat} from "../models/candidat.model";
 
 
 
@@ -13,6 +16,15 @@ import { diplome } from "../models/diplome.model";
 })
 
 export class CandidatDossierComponent{
+  constructor(
+              private router : Router,
+              private messageService: MessageService,
+              private http:HttpClient
+  ) {}
+
+candida : candidat = new candidat();
+  diplomes : diplome[] = [];
+
 
   candidatFormGroup : FormGroup=new FormGroup({
     username: new FormControl("",[Validators.required]),
@@ -24,6 +36,7 @@ export class CandidatDossierComponent{
     adresse: new FormControl("",[Validators.required]),
     diplome: new FormArray([this.getDiplomeFields()])
   });
+
    dipArr() {
     return this.candidatFormGroup.get('diplome') as FormArray;
   }
@@ -33,7 +46,8 @@ export class CandidatDossierComponent{
        titre: new FormControl("",[Validators.required]),
        specialite : new FormControl("",[Validators.required]),
        dateObtention :new FormControl("",[Validators.required]),
-       etablissement : new FormControl("",[Validators.required])
+       etablissement : new FormControl("",[Validators.required]),
+       file : new FormControl("",[Validators.required])
 
      });
 
@@ -52,20 +66,15 @@ export class CandidatDossierComponent{
 
   }
 
-  username!: string;
-  Prenom!: string;
-  nom!:string;
-  CNI!:string;
-  CNE!:string;
-  Email!: string;
-  Telephone!:string;
-  Adresse!:string;
-  diplomes : diplome[] = [];
 
 
-  constructor(private router : Router) {
+
+  selectedFile = null;
+  onUpload(event : any ) {
+    this.selectedFile=event.target.files[0];
+
+    this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
   }
-
 
   onSubmit() {
     console.log(this.diplomes);
