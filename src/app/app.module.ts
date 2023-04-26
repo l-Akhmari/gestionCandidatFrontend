@@ -9,29 +9,41 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { CandidatDossierEtape2Component } from './candidat-dossier-etape2/candidat-dossier-etape2.component';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { InputTextModule } from 'primeng/inputtext';
+
 import { FileUploadModule } from 'primeng/fileupload';
 import { HttpClientModule} from "@angular/common/http";
-import {ToastModule} from "primeng/toast";
 import {MessageService} from "primeng/api";
+
+import { AccueilComponent } from './accueil/accueil.component';
+import {ButtonModule} from "primeng/button";
+import {TableModule} from "primeng/table";
+import { ToastModule } from 'primeng/toast';
+import {TabViewModule} from "primeng/tabview";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     CondidatTemplateComponent,
     CandidatDossierComponent,
-    CandidatDossierEtape2Component
+
+    CandidatDossierEtape2Component,
+    AccueilComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    RadioButtonModule,
-    InputTextModule,
-    FormsModule,
-    FileUploadModule,
-    ToastModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        RadioButtonModule,
+        InputTextModule,
+        FormsModule,
+        ButtonModule,
+        TableModule,
+        ToastModule,
+      FileUploadModule,
+      HttpClientModule,
+        TabViewModule
+    ],
   providers: [MessageService],
   bootstrap: [AppComponent]
 })

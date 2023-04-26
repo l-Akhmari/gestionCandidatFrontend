@@ -1,0 +1,26 @@
+<div>
+  <p-tabView>
+    <p-tabPanel header="Formation Initiale">
+      <p-table [value]="formations" sortField="group"  [scrollable]="true" scrollHeight="1000px" rowGroupMode="subheader" groupRowsBy="group" [tableStyle]="{'min-width': '60rem'}" >
+        <ng-template pTemplate="groupheader" let-formation >
+         <tr pRowGroupHeader>
+            <td colspan="5">
+              <span [ngStyle]="{ color: 'var(--highlight-text-color)'}" class="font-bold ml-2">{{formation.group}}</span>
+            </td>
+         </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-formation let-rowIndex="rowIndex"   >
+          <tr>
+            <td >
+              {{formation.label}}
+            </td>
+            <p-button label="S'inscrir" styleClass="p-button-outlined p-button-secondary" (click)="show()" class="p-button-success" ></p-button>
+          </tr>
+        </ng-template>
+
+
+      </p-table>
+    </p-tabPanel>
+  </p-tabView>
+
+</div>
