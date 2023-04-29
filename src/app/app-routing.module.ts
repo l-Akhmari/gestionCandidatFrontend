@@ -19,7 +19,7 @@ const routes: Routes = [
   {
     path: "candidat", component: CondidatTemplateComponent, children: [
       { path: "accueil", component: AccueilComponent },
-      // { path: "monDossier", component: CandidatDossierComponent },
+      { path: "monDossierEX", component: CandidatDossierComponent },
       { path: "MondDossier/etape2", component: CandidatDossierEtape2Component }
 
     ]
