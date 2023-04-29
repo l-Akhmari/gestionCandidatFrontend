@@ -19,6 +19,10 @@ import {ButtonModule} from "primeng/button";
 import {TableModule} from "primeng/table";
 import { ToastModule } from 'primeng/toast';
 import {TabViewModule} from "primeng/tabview";
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { SidebarComponent } from './layouts/sidebar/sidebar.component';
+import { FooterComponent } from './layouts/footer/footer.component';
+import { NavbarComponent } from './layouts/navbar/navbar.component';
 
 
 @NgModule({
@@ -28,7 +32,11 @@ import {TabViewModule} from "primeng/tabview";
     CandidatDossierComponent,
 
     CandidatDossierEtape2Component,
-    AccueilComponent
+    AccueilComponent,
+    DashboardComponent,
+    SidebarComponent,
+    FooterComponent,
+    NavbarComponent
   ],
     imports: [
         BrowserModule,

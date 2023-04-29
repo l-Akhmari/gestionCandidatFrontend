@@ -1,18 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {CondidatTemplateComponent} from "./candidat-template/condidat-template.component";
-import {CandidatDossierComponent} from "./candidat-dossier/candidat-dossier.component";
-import {CandidatDossierEtape2Component} from "./candidat-dossier-etape2/candidat-dossier-etape2.component";
-import {AccueilComponent} from "./accueil/accueil.component";
+import { CondidatTemplateComponent } from "./candidat-template/condidat-template.component";
+import { CandidatDossierComponent } from "./candidat-dossier/candidat-dossier.component";
+import { CandidatDossierEtape2Component } from "./candidat-dossier-etape2/candidat-dossier-etape2.component";
+import { AccueilComponent } from "./accueil/accueil.component";
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [
 
-  {path:"", component:CondidatTemplateComponent},
-  {path:"candidat", component:CondidatTemplateComponent,children:[
-      {path:"accueil",component:AccueilComponent},
-      {path:"monDossier",component:CandidatDossierComponent},
-      {path:"MondDossier/etape2", component:CandidatDossierEtape2Component}
-    ]},
+  // {path:"", component:CondidatTemplateComponent},
+  { path: "Dashboard", component: DashboardComponent },
+  {
+    path: "candidat", component: CondidatTemplateComponent, children: [
+      { path: "accueil", component: AccueilComponent },
+      { path: "monDossier", component: CandidatDossierComponent },
+      { path: "MondDossier/etape2", component: CandidatDossierEtape2Component }
+
+    ]
+  },
 
 ];
 
