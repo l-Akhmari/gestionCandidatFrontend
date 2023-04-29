@@ -17,35 +17,58 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" *ngIf="currentUser.role != 'assistant'" :href="'/' + currentUser.role + '/dashboard'">
-                <span class="menu-title">Tableau de bord</span>
+            <a class="nav-link" *ngIf="currentUser.role != 'candidat'" :href="'/' + currentUser.role + '/dashboard'">
+                <span class="menu-title">Acceuil</span>
                 <i class="mdi mdi-home menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" *ngIf="currentUser.role != 'staff'" :href="'/' + currentUser.role + '/Addinvoice'">
-                <span class="menu-title">Comptabilité</span>
+            <a class="nav-link" *ngIf="currentUser.role != 'candidat'" :href="'/' + currentUser.role + '/Addinvoice'">
+                <span class="menu-title">Mes candidatures</span>
                 <i class="mdi mdi-file-document  menu-icon"></i>
             </a>
         </li>
-        
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="currentUser.role != 'candidat'" :href="'/' + currentUser.role + '/Addinvoice'">
+          <span class="menu-title">Mon dossier</span>
+          <i class="mdi mdi-file-document  menu-icon"></i>
+        </a>
+      </li>
+
         <li class="nav-item" *ngIf="currentUser.role != 'assistant'">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic-c" aria-expanded="false"
                 aria-controls="ui-basic-c">
-                <span class="menu-title">Client</span>
+                <span class="menu-title">Direction pedagogique</span>
                 <i class="menu-arrow"></i>
                 <i class="mdi mdi-account-check menu-icon"></i>
             </a>
             <div class="collapse" id="ui-basic-c">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" :href="'/' + currentUser.role + '/addclient'">Ajouter
-                            Client</a></li>
-                    <li class="nav-item"> <a class="nav-link" :href="'/' + currentUser.role + '/manageclient'">Gérer
-                            Clients</a>
+                    <li class="nav-item"> <a class="nav-link" :href="'/' + currentUser.role + '/addclient'">Ajouter direction<br> pedagogique
+                            </a></li>
+                    <li class="nav-item"> <a class="nav-link" :href="'/' + currentUser.role + '/manageclient'">Gérer direction<br> pedagogique
+                            </a>
+                    </li>
+                </ul>
+            </div>
+        </li>  <li class="nav-item" *ngIf="currentUser.role != 'assistant'">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic-c" aria-expanded="false"
+                aria-controls="ui-basic-d">
+                <span class="menu-title">Chef departement</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-account-check menu-icon"></i>
+            </a>
+            <div class="collapse" id="ui-basic-d">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" :href="'/' + currentUser.role + '/addclient'">Ajouter chef<br> departement
+                            </a></li>
+                    <li class="nav-item"> <a class="nav-link" :href="'/' + currentUser.role + '/manageclient'">Gérer chef<br> departement
+                            </a>
                     </li>
                 </ul>
             </div>
         </li>
+
         <li class="nav-item" #noText>
             <a class="nav-link" :href="'/' + currentUser.role + '/manageclient'">
                 <span class="menu-title">Client</span>
