@@ -20,9 +20,11 @@ import {TableModule} from "primeng/table";
 import { ToastModule } from 'primeng/toast';
 import {TabViewModule} from "primeng/tabview";
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { MonDossierComponent } from './pages/mon-dossier/mon-dossier.component';
 import { SidebarComponent } from './layouts/sidebar/sidebar.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
+
 
 
 @NgModule({
@@ -34,9 +36,11 @@ import { NavbarComponent } from './layouts/navbar/navbar.component';
     CandidatDossierEtape2Component,
     AccueilComponent,
     DashboardComponent,
+    MonDossierComponent,
     SidebarComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+   
   ],
     imports: [
         BrowserModule,

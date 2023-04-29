@@ -17,6 +17,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" *ngIf="currentUser.role != 'candidat'" href="/{{currentUser.role}}/Dashboard">
+                <span class="menu-title">Tableau de bord</span>
+                <i class="mdi mdi-view-dashboard menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" *ngIf="currentUser.role != 'candidat'" :href="'/' + currentUser.role + '/dashboard'">
                 <span class="menu-title">Acceuil</span>
                 <i class="mdi mdi-home menu-icon"></i>
@@ -25,15 +31,15 @@
         <li class="nav-item">
             <a class="nav-link" *ngIf="currentUser.role != 'candidat'" :href="'/' + currentUser.role + '/Addinvoice'">
                 <span class="menu-title">Mes candidatures</span>
-                <i class="mdi mdi-file-document  menu-icon"></i>
+                <i class="mdi mdi-folder-plus  menu-icon"></i>
             </a>
         </li>
-      <li class="nav-item">
-        <a class="nav-link" *ngIf="currentUser.role != 'candidat'" :href="'/' + currentUser.role + '/Addinvoice'">
-          <span class="menu-title">Mon dossier</span>
-          <i class="mdi mdi-file-document  menu-icon"></i>
-        </a>
-      </li>
+        <li class="nav-item">
+            <a class="nav-link" *ngIf="currentUser.role != 'candidat'" href="/{{currentUser.role }}/MonDossier">
+                <span class="menu-title">Mon dossier</span>
+                <i class="mdi mdi-folder  menu-icon"></i>
+            </a>
+        </li>
 
         <li class="nav-item" *ngIf="currentUser.role != 'assistant'">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic-c" aria-expanded="false"
@@ -44,14 +50,17 @@
             </a>
             <div class="collapse" id="ui-basic-c">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" :href="'/' + currentUser.role + '/addclient'">Ajouter direction<br> pedagogique
-                            </a></li>
-                    <li class="nav-item"> <a class="nav-link" :href="'/' + currentUser.role + '/manageclient'">Gérer direction<br> pedagogique
-                            </a>
+                    <li class="nav-item"> <a class="nav-link" :href="'/' + currentUser.role + '/addclient'">Ajouter
+                            direction<br> pedagogique
+                        </a></li>
+                    <li class="nav-item"> <a class="nav-link" :href="'/' + currentUser.role + '/manageclient'">Gérer
+                            direction<br> pedagogique
+                        </a>
                     </li>
                 </ul>
             </div>
-        </li>  <li class="nav-item" *ngIf="currentUser.role != 'assistant'">
+        </li>
+        <li class="nav-item" *ngIf="currentUser.role != 'assistant'">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic-c" aria-expanded="false"
                 aria-controls="ui-basic-d">
                 <span class="menu-title">Chef departement</span>
@@ -60,10 +69,12 @@
             </a>
             <div class="collapse" id="ui-basic-d">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" :href="'/' + currentUser.role + '/addclient'">Ajouter chef<br> departement
-                            </a></li>
-                    <li class="nav-item"> <a class="nav-link" :href="'/' + currentUser.role + '/manageclient'">Gérer chef<br> departement
-                            </a>
+                    <li class="nav-item"> <a class="nav-link" :href="'/' + currentUser.role + '/addclient'">Ajouter
+                            chef<br> departement
+                        </a></li>
+                    <li class="nav-item"> <a class="nav-link" :href="'/' + currentUser.role + '/manageclient'">Gérer
+                            chef<br> departement
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -125,21 +136,21 @@
                     <li class="nav-item"> <a class="nav-link" :href="'/' + currentUser.role + '/Managebooking'">Gérer
                             Réservations</a> </li>
                 </ul>
-        </div>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic3" aria-expanded="false"
-            aria-controls="ui-basic3">
-            <span class="menu-title">Dépense</span>
-            <i class="menu-arrow"></i>
-            <i class="mdi mdi-file-multiple  menu-icon"></i>
-        </a>
-        <div class="collapse" id="ui-basic3">
-            <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" :href="'/' + currentUser.role + '/Addspend'">Ajouter
-                        Dépense</a></li>
-                <li class="nav-item"> <a class="nav-link" :href="'/' + currentUser.role + '/Managespend'">Gérer
-                        Dépense</a> </li>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic3" aria-expanded="false"
+                aria-controls="ui-basic3">
+                <span class="menu-title">Dépense</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-file-multiple  menu-icon"></i>
+            </a>
+            <div class="collapse" id="ui-basic3">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" :href="'/' + currentUser.role + '/Addspend'">Ajouter
+                            Dépense</a></li>
+                    <li class="nav-item"> <a class="nav-link" :href="'/' + currentUser.role + '/Managespend'">Gérer
+                            Dépense</a> </li>
                 </ul>
             </div>
         </li>
