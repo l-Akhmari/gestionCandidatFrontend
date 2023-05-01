@@ -14,7 +14,7 @@ export class SidebarComponent {
 
   currentUser: currentUser = {
     role: "admin",
-    name: "S.AHANSAL"
+    name: "F.AFA"
   };
 
 
