@@ -24,8 +24,9 @@ import { MonDossierComponent } from './pages/mon-dossier/mon-dossier.component';
 import { SidebarComponent } from './layouts/sidebar/sidebar.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
-
-
+import { DialogModule } from 'primeng/dialog';
+;
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,9 @@ import { NavbarComponent } from './layouts/navbar/navbar.component';
         ToastModule,
       FileUploadModule,
       HttpClientModule,
-        TabViewModule
+        TabViewModule,
+        DialogModule,
+        BrowserAnimationsModule
     ],
   providers: [MessageService],
   bootstrap: [AppComponent]

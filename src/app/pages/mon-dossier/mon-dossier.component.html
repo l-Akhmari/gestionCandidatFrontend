@@ -1,121 +1,228 @@
 <div class="container-scroller">
-    <app-navbar />
-    <div class="container-fluid page-body-wrapper" style="margin-top: 5%;">
-        <app-sidebar />
-        <div class="main-panel">
-            <div class="content-wrapper">
-                <div class="page-header">
-                    <h3 class="page-title">
-                        <span class="page-title-icon bg-gradient-primary text-white me-2">
-                            <i class="mdi mdi-folder "></i>
-                        </span> Mon Dossier
-                    </h3>
-                    <nav aria-label="breadcrumb">
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item active d-none" aria-current="page">
-                                <span></span>Aperçu <i
-                                    class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="row">
-                    <div class="col-12 grid-margin">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Remplir les informations</h4>
-                                    <form class="form-sample" [formGroup]="candidatFormGroup">
-                                        <p class="card-description"> Informations personnelles</p>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label  htmlFor="nom" class="col-sm-3 col-form-label">Nom</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" required="" class="form-control" pInputText id="nom" aria-describedby="username-help" placeholder="Nom"  formControlName="username" />
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label  htmlFor="Prenom" class="col-sm-3 col-form-label">Prenom</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" required="" class="form-control" pInputText id="Prenom" aria-describedby="username-help" placeholder="Prenom"  formControlName="username" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                      <div class="row">
-                                        <div class="col-md-6">
-                                          <div class="form-group row">
-                                            <label  htmlFor="email" class="col-sm-3 col-form-label">Email</label>
-                                            <div class="col-sm-9">
-                                              <input type="text" required="" class="form-control" pInputText id="email" aria-describedby="username-help" placeholder="Email"  formControlName="email" />
-                                            </div>
-                                          </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                          <div class="form-group row">
-                                            <label  htmlFor="adresse" class="col-sm-3 col-form-label">Adresse</label>
-                                            <div class="col-sm-9">
-                                              <input type="text" required="" class="form-control" pInputText id="adresse" aria-describedby="username-help" placeholder="Adresse"  formControlName="adresse" />
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-
-                                      <div class="row">
-                                        <div class="col-md-6">
-                                          <div class="form-group row">
-                                            <label  htmlFor="cin" class="col-sm-3 col-form-label">CIN</label>
-                                            <div class="col-sm-9">
-                                              <input type="text" required="" class="form-control" pInputText id="cin" aria-describedby="username-help" placeholder="CIN"  formControlName="cin" />
-                                            </div>
-                                          </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                          <div class="form-group row">
-                                            <label  htmlFor="cne" class="col-sm-3 col-form-label">CNE</label>
-                                            <div class="col-sm-9">
-                                              <input type="text" required="" class="form-control" pInputText id="cne" aria-describedby="username-help" placeholder="CNE"  formControlName="cne" />
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="row">
-                                        <div class="col-md-6">
-                                          <div class="form-group row">
-                                            <label  htmlFor="telephone" class="col-sm-3 col-form-label">Telephone</label>
-                                            <div class="col-sm-9">
-                                              <input type="text" required="" class="form-control" pInputText id="telephone" aria-describedby="username-help" placeholder="Telephone"  formControlName="telephone" />
-                                            </div>
-                                          </div>
-                                        </div>
-
-
-                                      </div>
-
-                                        <p class="card-description"> a propos le(s) diplome(s)</p>
-                                        <div class="row">
-
-                                        </div>
-
-
-                                    </form>
-                                    <button class="btn btn-gradient-info me-2">Enregistrer</button>
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <app-footer />
+  <app-navbar />
+  <div class="container-fluid page-body-wrapper" style="margin-top: 6%;">
+    <app-sidebar />
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <div class="page-header">
+          <h3 class="page-title mt-2">
+            <span class="page-title-icon bg-gradient-primary text-white me-2">
+              <i class="mdi mdi-folder "></i>
+            </span> Mon Dossier
+          </h3>
+          <nav aria-label="breadcrumb">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item active d-none" aria-current="page">
+                <span></span>Aperçu <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+              </li>
+            </ul>
+          </nav>
         </div>
+        <div class="row">
+          <div class="col-12 grid-margin">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Remplir les informations</h4>
+                  <form class="form-sample" [formGroup]="candidatFormGroup">
+                    <p class="card-description"> Informations personnelles</p>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label htmlFor="nom" class="col-sm-3 col-form-label">Nom</label>
+                          <div class="col-sm-9">
+                            <input type="text" required="" class="form-control" pInputText id="nom"
+                              aria-describedby="username-help" placeholder="Nom" formControlName="username" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label htmlFor="Prenom" class="col-sm-3 col-form-label">Prenom</label>
+                          <div class="col-sm-9">
+                            <input type="text" required="" class="form-control" pInputText id="Prenom"
+                              aria-describedby="username-help" placeholder="Prenom" formControlName="username" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label htmlFor="email" class="col-sm-3 col-form-label">Email</label>
+                          <div class="col-sm-9">
+                            <input type="text" required="" class="form-control" pInputText id="email"
+                              aria-describedby="username-help" placeholder="Email" formControlName="email" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label htmlFor="adresse" class="col-sm-3 col-form-label">Adresse</label>
+                          <div class="col-sm-9">
+                            <input type="text" required="" class="form-control" pInputText id="adresse"
+                              aria-describedby="username-help" placeholder="Adresse" formControlName="adresse" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label htmlFor="cin" class="col-sm-3 col-form-label">CIN</label>
+                          <div class="col-sm-9">
+                            <input type="text" required="" class="form-control" pInputText id="cin"
+                              aria-describedby="username-help" placeholder="CIN" formControlName="cin" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label htmlFor="cne" class="col-sm-3 col-form-label">CNE</label>
+                          <div class="col-sm-9">
+                            <input type="text" required="" class="form-control" pInputText id="cne"
+                              aria-describedby="username-help" placeholder="CNE" formControlName="cne" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label htmlFor="telephone" class="col-sm-3 col-form-label">Telephone</label>
+                          <div class="col-sm-9">
+                            <input type="text" required="" class="form-control" pInputText id="telephone"
+                              aria-describedby="username-help" placeholder="Telephone" formControlName="telephone" />
+                          </div>
+                        </div>
+                      </div>
+
+
+                    </div>
+
+                  </form>
+
+                  <p-dialog header="Ajouter Diplome" [(visible)]="visible" [breakpoints]="{ '960px': '75vw' }"
+                    [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+                    <div class="card">
+                      <div class="card-body">
+                        <form class="form-sample">
+                          <p class="card-description"> Informations Diplome</p>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Type de diplome <span
+                                    class="text-danger">*</span></label>
+                                <div class="col-sm-9">
+                                  <select class="form-control form-control-sm" required v-model="location_fo"
+                                    id="exampleFormControlSelect">
+                                    <option value="">---Sélectionner---</option>
+                                    <option value="Agadir">DUT</option>
+                                    <option value="Marrakech">DEUG</option>
+                                    <option value="Essaouira">DTS</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-12">
+                              <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Spécialité <span
+                                    class="text-danger">*</span></label>
+                                <div class="col-sm-9">
+                                  <input type="number" required v-model="form.nbdays" class="form-control" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Année d'obtention<span
+                                    class="text-danger">*</span></label>
+                                <div class="col-sm-8">
+                                  <input type="number" v-model="form.priceday" class="form-control" />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Établissement<span
+                                    class="text-danger">*</span></label>
+                                <div class="col-sm-8">
+                                  <input type="number" v-model="form.priceday" class="form-control" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="d-flex justify-content-end w-100 " style="flex-wrap: wrap;">
+                      <button class="btn btn-gradient-danger me-2 mt-2">Annuler</button>
+                      <button class="btn btn-gradient-info me-2 mt-2">Enregistrer</button>
+                    </div>
+
+                  </p-dialog>
+                  <br> <br><br>
+                  <form class="form-sample ">
+                    <div class="d-flex justify-content-between">
+                      <p class="card-description"> a propos le(s) diplome(s)</p>
+                      <h3 title="Ajouter Article" (click)="showDialog()" class="page-title" style="cursor: pointer;">
+                        <span class=" page-title-icon bg-gradient-primary text-white me-2">
+                          <i class="mdi mdi-plus"></i>
+                        </span>
+                      </h3>
+                    </div>
+                    <br>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th> # </th>
+                            <th> Type de diplome </th>
+                            <th> Spécialité </th>
+                            <th> Année d'obtention </th>
+                            <th> Établissement </th>
+                            <th> Action </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>1</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                              <a class="badge badge-success " style="cursor: pointer;border-radius: 10px;"><i
+                                  class="mdi mdi-file-document"></i>
+                                Modifier</a>
+                              <a class="badge badge-danger mx-2" style="cursor: pointer;border-radius: 10px;"><i
+                                  class="mdi mdi-delete"></i>
+                                Supprimer</a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </form>
+                  <br><br>
+                  <button class="btn btn-gradient-info me-2">Enregistrer</button>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <app-footer />
     </div>
+  </div>
 </div>
