@@ -27,6 +27,7 @@ import { NavbarComponent } from './layouts/navbar/navbar.component';
 import { DialogModule } from 'primeng/dialog';
 ;
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {AccordionModule} from "primeng/accordion";
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SidebarComponent,
     FooterComponent,
     NavbarComponent,
-   
+
   ],
     imports: [
         BrowserModule,
@@ -53,11 +54,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         ButtonModule,
         TableModule,
         ToastModule,
-      FileUploadModule,
-      HttpClientModule,
+        FileUploadModule,
+        HttpClientModule,
         TabViewModule,
         DialogModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        AccordionModule
     ],
   providers: [MessageService],
   bootstrap: [AppComponent]

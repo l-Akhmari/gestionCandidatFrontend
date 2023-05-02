@@ -73,6 +73,12 @@ export class AccueilComponent {
 
   show() {
     this.messageService.add({ severity: 'success', summary: 'Success', detail: 'la formation :'});  }
+
+  onTabChange($event: any) {
+    console.log('Tab Changed:', $event.index);
+
+  }
+
 }
 
 
