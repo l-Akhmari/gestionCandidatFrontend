@@ -23,8 +23,20 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
+                  <div class="position-relative m-4">
+                    <div class="progress" role="progressbar" aria-label="Progress" aria-valuenow="50" aria-valuemin="0"
+                      aria-valuemax="100" style="height: 1px;">
+                      <div class="progress-bar" style="width: 0%"></div>
+                    </div>
+                    <button type="button" id="st1" class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-info "
+                      style="width: 2rem; height:2rem;">1</button>
+                    <button type="button" id="st2"
+                      class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-secondary "
+                      style="width: 2rem; height:2rem;">2</button>
+                  </div>
+                  <br>
                   <h4 class="card-title">Remplir les informations</h4>
-                  <form class="form-sample" [formGroup]="candidatFormGroup">
+                  <form class="form-sample" *ngIf="step1" [formGroup]="candidatFormGroup">
                     <p class="card-description"> Informations personnelles</p>
                     <div class="row">
                       <div class="col-md-6">
@@ -111,16 +123,16 @@
                     [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
                     <div class="card">
                       <div class="card-body">
-                        <form class="form-sample">
+                        <form class="form-sample" [formGroup]="diplomeFormGroup">
                           <p class="card-description"> Informations Diplome</p>
                           <div class="row">
                             <div class="col-md-12">
                               <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Type de diplome <span
+                                <label htmlFor="typediplome" class="col-sm-3 col-form-label">Type de diplome <span
                                     class="text-danger">*</span></label>
                                 <div class="col-sm-9">
-                                  <select class="form-control form-control-sm" required v-model="location_fo"
-                                    id="exampleFormControlSelect">
+                                  <select formControlName="typeDiplome" class="form-control form-control-sm" required
+                                    id="typediplome">
                                     <option value="">---Sélectionner---</option>
                                     <option value="Agadir">DUT</option>
                                     <option value="Marrakech">DEUG</option>
@@ -135,7 +147,7 @@
                                 <label class="col-sm-3 col-form-label">Spécialité <span
                                     class="text-danger">*</span></label>
                                 <div class="col-sm-9">
-                                  <input type="number" required v-model="form.nbdays" class="form-control" />
+                                  <input type="number" required formControlName="specialite" class="form-control" />
                                 </div>
                               </div>
                             </div>
@@ -146,7 +158,7 @@
                                 <label class="col-sm-4 col-form-label">Année d'obtention<span
                                     class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                  <input type="number" v-model="form.priceday" class="form-control" />
+                                  <input type="number" formControlName="anneeObtention" class="form-control" />
                                 </div>
                               </div>
                             </div>
@@ -155,7 +167,7 @@
                                 <label class="col-sm-4 col-form-label">Établissement<span
                                     class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                  <input type="number" v-model="form.priceday" class="form-control" />
+                                  <input type="number" formControlName="etablissement" class="form-control" />
                                 </div>
                               </div>
                             </div>
@@ -170,7 +182,7 @@
 
                   </p-dialog>
                   <br> <br><br>
-                  <form class="form-sample ">
+                  <form class="form-sample" *ngIf="step2" style="margin-bottom: 20px;">
                     <div class="d-flex justify-content-between">
                       <p class="card-description"> a propos le(s) diplome(s)</p>
                       <h3 title="Ajouter Article" (click)="showDialog()" class="page-title" style="cursor: pointer;">
@@ -212,9 +224,11 @@
                       </table>
                     </div>
                   </form>
-                  <br><br>
-                  <button class="btn btn-gradient-info me-2">Enregistrer</button>
-
+                  <div class="d-flex justify-content-end">
+                    <button *ngIf="step1" class="btn btn-gradient-info me-2" (click)="Suivant()">Suivant</button>
+                    <button *ngIf="step2" class="btn btn-gradient-secondary me-2" (click)="Back()">Précédent</button>
+                    <button *ngIf="step2" class="btn btn-gradient-info me-2">Enregistrer</button>
+                  </div>
 
                 </div>
               </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validator, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { diplome } from "../../models/diplome.model";
@@ -16,8 +16,13 @@ export class MonDossierComponent {
   constructor(
     private router: Router,
     private messageService: MessageService,
-    private http: HttpClient
+    private http: HttpClient,
+    private elementRef: ElementRef,
+    private renderer: Renderer2
   ) { }
+
+  step1: boolean = true;
+  step2: boolean = false;
 
   candida: candidat = new candidat();
   diplomes: diplome[] = [];
@@ -34,15 +39,41 @@ export class MonDossierComponent {
     diplome: new FormArray([this.getDiplomeFields()])
   });
 
+  diplomeFormGroup: FormGroup = new FormGroup({
+    typeDiplome: new FormControl("", [Validators.required]),
+    specialite: new FormControl("", [Validators.required]),
+    anneeObtention: new FormControl("", [Validators.required]),
+    etablissement: new FormControl("", [Validators.required]),
+  })
+
   dipArr() {
     return this.candidatFormGroup.get('diplome') as FormArray;
   }
+  Suivant() {
+    this.step1 = false;
+    this.step2 = true;
+    const progressBar = this.elementRef.nativeElement.querySelector('.progress-bar');
+    this.renderer.setStyle(progressBar, 'width', '100%');
+    const st2 = this.elementRef.nativeElement.querySelector('#st2');
+    this.renderer.removeClass(st2, 'btn-secondary');
+    this.renderer.addClass(st2, 'btn-info');
 
+  }
+  Back() {
+    this.step1 = true;
+    this.step2 = false;
+    const progressBar = this.elementRef.nativeElement.querySelector('.progress-bar');
+    this.renderer.setStyle(progressBar, 'width', '0%');
+    const st2 = this.elementRef.nativeElement.querySelector('#st2');
+    this.renderer.removeClass(st2, 'btn-info');
+    this.renderer.addClass(st2, 'btn-secondary');
+  }
   visible!: boolean;
 
   showDialog() {
     this.visible = true;
   }
+
   getDiplomeFields(): FormGroup {
     return new FormGroup({
       titre: new FormControl("", [Validators.required]),
