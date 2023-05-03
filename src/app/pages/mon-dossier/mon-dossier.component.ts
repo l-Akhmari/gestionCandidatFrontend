@@ -1,7 +1,6 @@
 import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validator, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
-import { diplome } from "../../models/diplome.model";
 import { MessageService } from "primeng/api";
 import { HttpClient } from "@angular/common/http";
 import { candidat } from "../../models/candidat.model";
@@ -24,8 +23,7 @@ export class MonDossierComponent {
   step1: boolean = true;
   step2: boolean = false;
 
-  candida: candidat = new candidat();
-  diplomes: diplome[] = [];
+  //candida: candidat = new candidat();
 
 
   candidatFormGroup: FormGroup = new FormGroup({
@@ -38,6 +36,16 @@ export class MonDossierComponent {
     adresse: new FormControl("", [Validators.required]),
     diplome: new FormArray([this.getDiplomeFields()])
   });
+  handleSuivant(){
+
+    let username :string = this.candidatFormGroup.value.username;
+    let prenom :string = this.candidatFormGroup.value.prenom;
+    let cin :string = this.candidatFormGroup.value.cin;
+    let cne :string = this.candidatFormGroup.value.cne;
+    let email :string = this.candidatFormGroup.value.email;
+    let telephone :string = this.candidatFormGroup.value.telephone;
+    let adresse :string = this.candidatFormGroup.value.adresse;
+  }
 
   diplomeFormGroup: FormGroup = new FormGroup({
     typeDiplome: new FormControl("", [Validators.required]),
@@ -91,6 +99,7 @@ export class MonDossierComponent {
     console.log(this.candidatFormGroup);
 
   }
+
 
   removeDiploma(i: number) {
     this.dipArr().removeAt(i);

@@ -14,7 +14,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { HttpClientModule} from "@angular/common/http";
 import {MessageService} from "primeng/api";
 
-import { AccueilComponent } from './accueil/accueil.component';
+import { AccueilComponent } from './pages/accueil/accueil.component';
 import {ButtonModule} from "primeng/button";
 import {TableModule} from "primeng/table";
 import { ToastModule } from 'primeng/toast';

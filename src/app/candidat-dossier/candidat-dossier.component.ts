@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validator, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import { diplome } from "../models/diplome.model";
+//import { diplome } from "../models/diplome.model";
 import {MessageService} from "primeng/api";
 import {HttpClient} from "@angular/common/http";
 import {candidat} from "../models/candidat.model";
@@ -22,8 +22,6 @@ export class CandidatDossierComponent{
               private http:HttpClient
   ) {}
 
-candida : candidat = new candidat();
-  diplomes : diplome[] = [];
 
 
   candidatFormGroup : FormGroup=new FormGroup({
@@ -77,7 +75,6 @@ candida : candidat = new candidat();
   }
 
   onSubmit() {
-    console.log(this.diplomes);
     this.router.navigateByUrl("/candidat/monDossier");
 
   }

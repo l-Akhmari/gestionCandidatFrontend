@@ -1,4 +1,10 @@
+<div class="container-scroller">
+  <app-navbar />
+  <div class="container-fluid page-body-wrapper" style="margin-top: 6%;">
+    <app-sidebar />
 <div>
+
+
   <p-tabView>
     <p-tabPanel header="Formation Initiale">
       <p-table [value]="formations" sortField="group"  [scrollable]="true" scrollHeight="1000px" rowGroupMode="subheader" groupRowsBy="group" [tableStyle]="{'min-width': '60rem'}" >
@@ -353,4 +359,5 @@
     </p-tabPanel>
   </p-tabView>
 
+</div>
 </div>

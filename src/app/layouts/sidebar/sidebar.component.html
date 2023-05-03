@@ -23,13 +23,13 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" *ngIf="currentUser.role != 'candidat'" :href="'/' + currentUser.role + '/dashboard'">
+            <a class="nav-link" *ngIf="currentUser.role != 'candidat'" :href="{{currentUser.role }}/acceuil">
                 <span class="menu-title">Acceuil</span>
                 <i class="mdi mdi-home menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" *ngIf="currentUser.role != 'candidat'" :href="'/' + currentUser.role + '/Addinvoice'">
+            <a class="nav-link" *ngIf="currentUser.role != 'candidat'" :href="'/' + currentUser.role + '/'">
                 <span class="menu-title">Mes candidatures</span>
                 <i class="mdi mdi-folder-plus  menu-icon"></i>
             </a>
