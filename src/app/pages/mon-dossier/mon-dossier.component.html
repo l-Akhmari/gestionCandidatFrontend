@@ -28,7 +28,8 @@
                       aria-valuemax="100" style="height: 1px;">
                       <div class="progress-bar" style="width: 0%"></div>
                     </div>
-                    <button type="button" id="st1" class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-info "
+                    <button type="button" id="st1"
+                      class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-info "
                       style="width: 2rem; height:2rem;">1</button>
                     <button type="button" id="st2"
                       class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-secondary "
@@ -41,7 +42,8 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label htmlFor="nom" class="col-sm-3 col-form-label">Nom</label>
+                          <label htmlFor="nom" class="col-sm-3 col-form-label">Nom <span
+                              class="text-danger">*</span></label>
                           <div class="col-sm-9">
                             <input type="text" required="" class="form-control" pInputText id="nom"
                               aria-describedby="username-help" placeholder="Nom" formControlName="username" />
@@ -51,7 +53,8 @@
 
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label htmlFor="Prenom" class="col-sm-3 col-form-label">Prenom</label>
+                          <label htmlFor="Prenom" class="col-sm-3 col-form-label">Prenom <span
+                              class="text-danger">*</span></label>
                           <div class="col-sm-9">
                             <input type="text" required="" class="form-control" pInputText id="Prenom"
                               aria-describedby="username-help" placeholder="Prenom" formControlName="username" />
@@ -63,7 +66,8 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label htmlFor="email" class="col-sm-3 col-form-label">Email</label>
+                          <label htmlFor="email" class="col-sm-3 col-form-label">Email <span
+                              class="text-danger">*</span></label>
                           <div class="col-sm-9">
                             <input type="text" required="" class="form-control" pInputText id="email"
                               aria-describedby="username-help" placeholder="Email" formControlName="email" />
@@ -73,7 +77,8 @@
 
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label htmlFor="adresse" class="col-sm-3 col-form-label">Adresse</label>
+                          <label htmlFor="adresse" class="col-sm-3 col-form-label">Adresse <span
+                              class="text-danger">*</span></label>
                           <div class="col-sm-9">
                             <input type="text" required="" class="form-control" pInputText id="adresse"
                               aria-describedby="username-help" placeholder="Adresse" formControlName="adresse" />
@@ -85,7 +90,8 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label htmlFor="cin" class="col-sm-3 col-form-label">CIN</label>
+                          <label htmlFor="cin" class="col-sm-3 col-form-label">CIN <span
+                              class="text-danger">*</span></label>
                           <div class="col-sm-9">
                             <input type="text" required="" class="form-control" pInputText id="cin"
                               aria-describedby="username-help" placeholder="CIN" formControlName="cin" />
@@ -95,7 +101,8 @@
 
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label htmlFor="cne" class="col-sm-3 col-form-label">CNE</label>
+                          <label htmlFor="cne" class="col-sm-3 col-form-label">CNE <span
+                              class="text-danger">*</span></label>
                           <div class="col-sm-9">
                             <input type="text" required="" class="form-control" pInputText id="cne"
                               aria-describedby="username-help" placeholder="CNE" formControlName="cne" />
@@ -106,7 +113,8 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label htmlFor="telephone" class="col-sm-3 col-form-label">Telephone</label>
+                          <label htmlFor="telephone" class="col-sm-3 col-form-label">Telephone <span
+                              class="text-danger">*</span></label>
                           <div class="col-sm-9">
                             <input type="text" required="" class="form-control" pInputText id="telephone"
                               aria-describedby="username-help" placeholder="Telephone" formControlName="telephone" />
@@ -155,7 +163,7 @@
                           <div class="row">
                             <div class="col-md-12">
                               <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">Année d'obtention<span
+                                <label class="col-sm-4 col-form-label">Année d'obtention <span
                                     class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                   <input type="text" formControlName="anneeObtention" class="form-control" />
@@ -164,18 +172,18 @@
                             </div>
                             <div class="col-md-12">
                               <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">Établissement<span
+                                <label class="col-sm-4 col-form-label">Établissement <span
                                     class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                   <input type="text" formControlName="etablissement" class="form-control" />
                                 </div>
                               </div>
                             </div>
-                          </div><div class="row">
+                          </div>
+                          <div class="row">
                             <div class="col-md-12">
                               <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">Fichier<span
-                                    class="text-danger">*</span></label>
+                                <label class="col-sm-4 col-form-label">Fichier <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                   <input type="file" formControlName="fichier" class="form-control" />
                                 </div>

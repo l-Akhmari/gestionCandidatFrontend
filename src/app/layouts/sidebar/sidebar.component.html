@@ -23,7 +23,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" *ngIf="currentUser.role != 'candidat'" :href="{{currentUser.role }}/acceuil">
+            <a class="nav-link" *ngIf="currentUser.role != 'candidat'" href="{{currentUser.role }}/acceuil">
                 <span class="menu-title">Acceuil</span>
                 <i class="mdi mdi-home menu-icon"></i>
             </a>
@@ -41,16 +41,16 @@
             </a>
         </li>
 
-        <li class="nav-item" *ngIf="currentUser.role != 'assistant'">
+        <li class="nav-item" >
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic-c" aria-expanded="false"
                 aria-controls="ui-basic-c">
-                <span class="menu-title">Direction pedagogique</span>
+                <span class="menu-title">Direction pédagogique</span>
                 <i class="menu-arrow"></i>
                 <i class="mdi mdi-account-check menu-icon"></i>
             </a>
             <div class="collapse" id="ui-basic-c">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" :href="'/' + currentUser.role + '/addclient'">Ajouter
+                    <li class="nav-item"> <a class="nav-link" href="/{{currentUser.role}}/AddDirectionPedagogique" >Ajouter
                             direction<br> pedagogique
                         </a></li>
                     <li class="nav-item"> <a class="nav-link" :href="'/' + currentUser.role + '/manageclient'">Gérer
@@ -60,8 +60,8 @@
                 </ul>
             </div>
         </li>
-        <li class="nav-item" *ngIf="currentUser.role != 'assistant'">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic-c" aria-expanded="false"
+        <li class="nav-item" >
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic-d" aria-expanded="false"
                 aria-controls="ui-basic-d">
                 <span class="menu-title">Chef departement</span>
                 <i class="menu-arrow"></i>

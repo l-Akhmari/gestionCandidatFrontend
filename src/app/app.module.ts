@@ -21,6 +21,8 @@ import { ToastModule } from 'primeng/toast';
 import {TabViewModule} from "primeng/tabview";
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MonDossierComponent } from './pages/mon-dossier/mon-dossier.component';
+import { AddDirectionPedagogiqueComponent } from './pages/add-direction-pedagogique/add-direction-pedagogique.component';
+
 import { SidebarComponent } from './layouts/sidebar/sidebar.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
@@ -42,6 +44,7 @@ import {AccordionModule} from "primeng/accordion";
     SidebarComponent,
     FooterComponent,
     NavbarComponent,
+    AddDirectionPedagogiqueComponent,
 
   ],
     imports: [

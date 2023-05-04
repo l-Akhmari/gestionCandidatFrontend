@@ -6,14 +6,16 @@ import { CandidatDossierEtape2Component } from "./candidat-dossier-etape2/candid
 import { AccueilComponent } from "./pages/accueil/accueil.component";
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MonDossierComponent } from './pages/mon-dossier/mon-dossier.component';
-
+import { AddDirectionPedagogiqueComponent } from './pages/add-direction-pedagogique/add-direction-pedagogique.component';
 const routes: Routes = [
 
   // {path:"", component:CondidatTemplateComponent},
+  { path: '', redirectTo: 'admin/Dashboard', pathMatch: 'full' },
   {
     path: "admin", children: [
       { path: "Dashboard", component: DashboardComponent },
       { path: "MonDossier", component: MonDossierComponent },
+      { path: "AddDirectionPedagogique", component: AddDirectionPedagogiqueComponent },
       { path: "acceuil", component: AccueilComponent },
     ]
   },
