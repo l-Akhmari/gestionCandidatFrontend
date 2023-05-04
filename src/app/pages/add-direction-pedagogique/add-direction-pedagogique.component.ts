@@ -25,5 +25,23 @@ export class AddDirectionPedagogiqueComponent {
     email: new FormControl("", [Validators.required]),
     telephone: new FormControl("", [Validators.required]),
     adresse: new FormControl("", [Validators.required]),
+    password: new FormControl("", [Validators.required]),
   });
+
+  generateAndLogPassword() {
+    const password = this.generatePassword(8); // generate an 8-character password
+    this.AddDirectionFormGroup.controls['password'].setValue(password); // set the value of myControl in myForm to the value returned by getValue()
+    console.log(password);
+  }
+
+  generatePassword(length: number): string {
+    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let password = '';
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * chars.length);
+      password += chars.charAt(randomIndex);
+    }
+    return password;
+  }
+
 }
