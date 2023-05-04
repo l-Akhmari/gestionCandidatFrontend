@@ -45,6 +45,10 @@ export class MonDossierComponent {
     let email :string = this.candidatFormGroup.value.email;
     let telephone :string = this.candidatFormGroup.value.telephone;
     let adresse :string = this.candidatFormGroup.value.adresse;
+
+
+
+
   }
 
   diplomeFormGroup: FormGroup = new FormGroup({

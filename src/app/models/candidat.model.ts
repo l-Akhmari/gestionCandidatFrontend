@@ -1,6 +1,5 @@
 
 export interface candidat{
-
    username: string;
    Prenom : string;
    nom:string;
@@ -10,14 +9,16 @@ export interface candidat{
    Adresse:string;
    dateNaissance: Date;
    mdp:string;
-   Filieres : filiere[];
    ville:string;
    admis:boolean;
    CNE:string;
 }
+
+
 export interface filiere {
   _idFiliere: number;
   _intitule: string;
 
 
 }
+
