@@ -10,8 +10,9 @@ import { AddDirectionPedagogiqueComponent } from './pages/add-direction-pedagogi
 const routes: Routes = [
 
   // {path:"", component:CondidatTemplateComponent},
-  { path: '', redirectTo: 'admin/Dashboard', pathMatch: 'full' },
-  {
+
+  //{ path: '', redirectTo: 'admin/Dashboard', pathMatch: 'full' },
+ /* {
     path: "admin", children: [
       { path: "Dashboard", component: DashboardComponent },
       { path: "MonDossier", component: MonDossierComponent },
@@ -25,8 +26,8 @@ const routes: Routes = [
       { path: "MondDossier/etape2", component: CandidatDossierEtape2Component }
 
     ]
-  },
-
+  },*/
+  { path:"candidat", component:MonDossierComponent },
 ];
 
 @NgModule({

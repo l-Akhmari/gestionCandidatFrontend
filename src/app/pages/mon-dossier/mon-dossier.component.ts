@@ -1,9 +1,14 @@
-import { Component, ElementRef, Renderer2 } from '@angular/core';
+import { Component, ElementRef, Renderer2, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validator, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { MessageService } from "primeng/api";
-import { HttpClient } from "@angular/common/http";
-import { candidat } from "../../models/candidat.model";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import { Candidat } from "../../models/candidat.model";
+import {DiplomeService} from "../../services/diplome.service";
+import {Observable} from "rxjs";
+import {CandidatService} from "../../services/candidat.service";
+//import {diplome} from "../../models/diplome.model"
+
 
 
 @Component({
@@ -11,20 +16,25 @@ import { candidat } from "../../models/candidat.model";
   templateUrl: './mon-dossier.component.html',
   styleUrls: ['./mon-dossier.component.css'],
 })
-export class MonDossierComponent {
+export class MonDossierComponent implements OnInit{
   constructor(
     private router: Router,
     private messageService: MessageService,
     private http: HttpClient,
     private elementRef: ElementRef,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private diplomeService: DiplomeService,
+    private candidatService : CandidatService
   ) { }
 
   step1: boolean = true;
   step2: boolean = false;
 
-  //candida: candidat = new candidat();
+//accountObservable! : Observable<diplome>
 
+//candida: candidat = new candidat();
+
+  public candidats: Candidat[] = [];
 
   candidatFormGroup: FormGroup = new FormGroup({
     username: new FormControl("", [Validators.required]),
@@ -36,6 +46,21 @@ export class MonDossierComponent {
     adresse: new FormControl("", [Validators.required]),
     diplome: new FormArray([this.getDiplomeFields()])
   });
+  public getCandidats(): void {
+    this.candidatService.getAllCandidats().subscribe(
+      (response: Candidat[]) => {
+        this.candidats = response;
+        console.log(this.candidats);
+      },
+      (error: HttpErrorResponse) => {
+
+      }
+
+    );
+
+  }
+
+
   handleSuivant(){
 
     let username :string = this.candidatFormGroup.value.username;
@@ -45,8 +70,6 @@ export class MonDossierComponent {
     let email :string = this.candidatFormGroup.value.email;
     let telephone :string = this.candidatFormGroup.value.telephone;
     let adresse :string = this.candidatFormGroup.value.adresse;
-
-
 
 
   }
@@ -110,5 +133,9 @@ export class MonDossierComponent {
     // const control=<FormArray>this.candidatFormGroup.controls['diplome'];
     // control.removeAt(i);
 
+  }
+
+  ngOnInit(): void {
+    this.getCandidats();
   }
 }

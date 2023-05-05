@@ -2,6 +2,7 @@
   <app-navbar />
   <div class="container-fluid page-body-wrapper" style="margin-top: 6%;">
     <app-sidebar />
+
     <div class="main-panel">
       <div class="content-wrapper">
         <div class="page-header">
@@ -37,8 +38,23 @@
                   </div>
                   <br>
                   <h4 class="card-title">Remplir les informations</h4>
+
                   <form class="form-sample" *ngIf="step1" [formGroup]="candidatFormGroup" (submit)="handleSuivant()">
                     <p class="card-description"> Informations personnelles</p>
+
+                      <table>
+                        <thead>
+                        <th>username</th> <th>adresse</th> <th>adresse</th>
+                        </thead>
+                        <tbody *ngFor="let candidat of candidats">
+                        <tr>
+                          <td>{{candidat.cne}}</td>
+                          <td>{{candidat.Adresse}}</td>
+                          <td>ffhfhfhfhfhfhfh</td>
+                        </tr>
+
+                        </tbody>
+                      </table>
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">

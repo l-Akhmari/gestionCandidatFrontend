@@ -4,7 +4,7 @@ import {Router} from "@angular/router";
 //import { diplome } from "../models/diplome.model";
 import {MessageService} from "primeng/api";
 import {HttpClient} from "@angular/common/http";
-import {candidat} from "../models/candidat.model";
+import {Candidat} from "../models/candidat.model";
 
 
 

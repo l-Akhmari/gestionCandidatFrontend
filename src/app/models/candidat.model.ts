@@ -1,5 +1,5 @@
 
-export interface candidat{
+export interface Candidat{
    username: string;
    Prenom : string;
    nom:string;
@@ -11,14 +11,13 @@ export interface candidat{
    mdp:string;
    ville:string;
    admis:boolean;
-   CNE:string;
+    cne:string;
 }
 
 
 export interface filiere {
   _idFiliere: number;
   _intitule: string;
-
 
 }
 
