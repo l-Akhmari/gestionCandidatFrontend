@@ -30,6 +30,7 @@ import { DialogModule } from 'primeng/dialog';
 ;
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AccordionModule} from "primeng/accordion";
+import { AddChefDepartementComponent } from './add-chef-departement/add-chef-departement.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import {AccordionModule} from "primeng/accordion";
     FooterComponent,
     NavbarComponent,
     AddDirectionPedagogiqueComponent,
+    AddChefDepartementComponent,
 
   ],
     imports: [

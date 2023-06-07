@@ -35,7 +35,7 @@ export class MonDossierComponent implements OnInit{
 //candida: candidat = new candidat();
 
   public candidats: Candidat[] = [];
-
+  public candidat!: Candidat;
   candidatFormGroup: FormGroup = new FormGroup({
     username: new FormControl("", [Validators.required]),
     prenom: new FormControl("", [Validators.required]),
@@ -44,6 +44,7 @@ export class MonDossierComponent implements OnInit{
     email: new FormControl("", [Validators.required]),
     telephone: new FormControl("", [Validators.required]),
     adresse: new FormControl("", [Validators.required]),
+    ville: new FormControl("", [Validators.required]),
     diplome: new FormArray([this.getDiplomeFields()])
   });
   public getCandidats(): void {
@@ -63,13 +64,16 @@ export class MonDossierComponent implements OnInit{
 
   handleSuivant(){
 
-    let username :string = this.candidatFormGroup.value.username;
-    let prenom :string = this.candidatFormGroup.value.prenom;
-    let cin :string = this.candidatFormGroup.value.cin;
-    let cne :string = this.candidatFormGroup.value.cne;
-    let email :string = this.candidatFormGroup.value.email;
-    let telephone :string = this.candidatFormGroup.value.telephone;
-    let adresse :string = this.candidatFormGroup.value.adresse;
+    this.candidat.nom = this.candidatFormGroup.value.username;
+    this.candidat.Prenom= this.candidatFormGroup.value.prenom;
+    this.candidat.CNI = this.candidatFormGroup.value.cin;
+    this.candidat.cne = this.candidatFormGroup.value.cne;
+    this.candidat.Email = this.candidatFormGroup.value.email;
+    this.candidat.Telephone = this.candidatFormGroup.value.telephone;
+    this.candidat.Adresse= this.candidatFormGroup.value.adresse;
+    this.candidat.mdp="111";
+    this.candidat.ville=this.candidatFormGroup.value.ville;
+    this.candidat.admis=false;
 
 
   }
@@ -79,6 +83,7 @@ export class MonDossierComponent implements OnInit{
     specialite: new FormControl("", [Validators.required]),
     anneeObtention: new FormControl("", [Validators.required]),
     etablissement: new FormControl("", [Validators.required]),
+
   })
 
   dipArr() {

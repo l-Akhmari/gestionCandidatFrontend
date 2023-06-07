@@ -62,18 +62,18 @@
                               class="text-danger">*</span></label>
                           <div class="col-sm-9">
                             <input type="text" required="" class="form-control" pInputText id="nom"
-                              aria-describedby="username-help" placeholder="Nom" formControlName="username" />
+                              aria-describedby="username-help" placeholder="Nom" formControlName="nom" />
                           </div>
                         </div>
                       </div>
 
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label htmlFor="Prenom" class="col-sm-3 col-form-label">Prenom <span
+                          <label htmlFor="Prenom" class="col-sm-3 col-form-label">Prénom <span
                               class="text-danger">*</span></label>
                           <div class="col-sm-9">
                             <input type="text" required="" class="form-control" pInputText id="Prenom"
-                              aria-describedby="username-help" placeholder="Prenom" formControlName="username" />
+                              aria-describedby="username-help" placeholder="Prenom" formControlName="prenom" />
                           </div>
                         </div>
                       </div>
@@ -93,7 +93,7 @@
 
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label htmlFor="adresse" class="col-sm-3 col-form-label">Adresse <span
+                          <label htmlFor="adresse" class="col-sm-3 col-form-label">Adresse<span
                               class="text-danger">*</span></label>
                           <div class="col-sm-9">
                             <input type="text" required="" class="form-control" pInputText id="adresse"
@@ -137,6 +137,16 @@
                           </div>
                         </div>
                       </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label htmlFor="ville" class="col-sm-3 col-form-label">Ville <span
+                              class="text-danger">*</span></label>
+                          <div class="col-sm-9">
+                            <input type="text" required="" class="form-control" pInputText id="ville"
+                              aria-describedby="username-help" placeholder="Ville" formControlName="ville" />
+                          </div>
+                        </div>
+                      </div>
 
 
                     </div>
@@ -158,9 +168,12 @@
                                   <select formControlName="typeDiplome" class="form-control form-control-sm" required
                                     id="typediplome">
                                     <option value="">---Sélectionner---</option>
-                                    <option value="Agadir">DUT</option>
-                                    <option value="Marrakech">DEUG</option>
-                                    <option value="Essaouira">DTS</option>
+                                    <option value="DUT">DUT</option>
+                                    <option value="DEUG">DEUG</option>
+                                    <option value="DTS">DTS</option>
+                                    <option value="DEUST">DEUST</option>
+                                    <option value="BTS">BTS</option>
+                                    <option value="Autre">Autre</option>
                                   </select>
                                 </div>
                               </div>

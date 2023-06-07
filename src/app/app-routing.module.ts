@@ -7,16 +7,18 @@ import { AccueilComponent } from "./pages/accueil/accueil.component";
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MonDossierComponent } from './pages/mon-dossier/mon-dossier.component';
 import { AddDirectionPedagogiqueComponent } from './pages/add-direction-pedagogique/add-direction-pedagogique.component';
+import {AddChefDepartementComponent} from "./add-chef-departement/add-chef-departement.component";
 const routes: Routes = [
 
   // {path:"", component:CondidatTemplateComponent},
 
-  //{ path: '', redirectTo: 'admin/Dashboard', pathMatch: 'full' },
- /* {
+  { path: '', redirectTo: 'admin/Dashboard', pathMatch: 'full' },
+ {
     path: "admin", children: [
       { path: "Dashboard", component: DashboardComponent },
       { path: "MonDossier", component: MonDossierComponent },
       { path: "AddDirectionPedagogique", component: AddDirectionPedagogiqueComponent },
+     {path: "AddChefDepartement", component: AddChefDepartementComponent},
       { path: "acceuil", component: AccueilComponent },
     ]
   },
@@ -26,8 +28,8 @@ const routes: Routes = [
       { path: "MondDossier/etape2", component: CandidatDossierEtape2Component }
 
     ]
-  },*/
-  { path:"candidat", component:MonDossierComponent },
+  },
+  //{ path:"candidat", component:MonDossierComponent },
 ];
 
 @NgModule({

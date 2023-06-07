@@ -1,14 +1,15 @@
-import { Component, ElementRef, Renderer2 } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validator, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
-import { MessageService } from "primeng/api";
-import { HttpClient } from "@angular/common/http";
+import {Component, ElementRef, Renderer2} from '@angular/core';
+import {Router} from "@angular/router";
+import {MessageService} from "primeng/api";
+import {HttpClient} from "@angular/common/http";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+
 @Component({
-  selector: 'app-add-direction-pedagogique',
-  templateUrl: './add-direction-pedagogique.component.html',
-  styleUrls: ['./add-direction-pedagogique.component.css']
+  selector: 'app-add-chef-departement',
+  templateUrl: './add-chef-departement.component.html',
+  styleUrls: ['./add-chef-departement.component.css']
 })
-export class AddDirectionPedagogiqueComponent {
+export class AddChefDepartementComponent {
   constructor(
     private router: Router,
     private messageService: MessageService,
@@ -17,7 +18,7 @@ export class AddDirectionPedagogiqueComponent {
     private renderer: Renderer2
   ) { }
 
-  AddDirectionFormGroup: FormGroup = new FormGroup({
+  AddChefDepartFormGroup: FormGroup = new FormGroup({
     username: new FormControl("", [Validators.required]),
     prenom: new FormControl("", [Validators.required]),
     cin: new FormControl("", [Validators.required]),
@@ -30,7 +31,7 @@ export class AddDirectionPedagogiqueComponent {
 
   generateAndLogPassword() {
     const password = this.generatePassword(8); // generate an 8-character password
-    this.AddDirectionFormGroup.controls['password'].setValue(password); // set the value of myControl in myForm to the value returned by getValue()
+    this.AddChefDepartFormGroup.controls['password'].setValue(password); // set the value of myControl in myForm to the value returned by getValue()
     console.log(password);
   }
 
