@@ -9,6 +9,7 @@ import {Observable} from "rxjs";
 import {CandidatService} from "../../services/candidat.service";
 import {Diplome} from "../../models/Diplome.model";
 import {Fichier} from "../../models/Fichier.model";
+
 //import {diplome} from "../../models/diplome.model"
 
 
@@ -65,7 +66,7 @@ export class MonDossierComponent implements OnInit{
     ville: new FormControl("", [Validators.required]),
    // diplome: new FormArray([this.getDiplomeFields()])
   });
-  public getCandidats(): void {
+  /*public getCandidats(): void {
     this.candidatService.getAllCandidats().subscribe(
       (response: Candidat[]) => {
         this.candidats = response;
@@ -77,7 +78,7 @@ export class MonDossierComponent implements OnInit{
 
     );
 
-  }
+  }*/
 
 
   handleSuivant(){
@@ -162,7 +163,7 @@ export class MonDossierComponent implements OnInit{
   }*/
 
   ngOnInit(): void {
-    this.getCandidats();
+    //this.getCandidats();
   }
 
   enregisterCandidature() {
@@ -185,16 +186,7 @@ export class MonDossierComponent implements OnInit{
     // Perform any necessary operations with the 'candidat' and 'diplomeCandidat' data
     console.log("diplomeCandidat:", this.diplomeCandidat);
 
-    this.diplomeService.saveDiplome(this.diplomeCandidat, this.candidat, this.fichier).subscribe(
-      (response: Diplome) => {
-        // Traitement en cas de succès
-        console.log('Diplôme sauvegardé:', response);
-      },
-      (error: any) => {
-        // Traitement en cas d'erreur
-        console.error('Erreur lors de la sauvegarde du diplôme:', error);
-      }
-    );
+
     }
 
   }
