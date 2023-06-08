@@ -8,8 +8,11 @@ import {Candidat} from "../models/Candidat.model";
 })
 export class CandidatService {
 
-  constructor(private http : HttpClient) { }
-  public getAllCandidats(): Observable<Candidat[]> {
-    return this.http.get<Candidat[]>(`http://localhost:8085/candidat/all`);
+  private apiUrl = 'http://localhost:8085/candidat';
+
+  constructor(private http: HttpClient) {}
+
+  saveCandidat(candidat: Candidat): Observable<Candidat> {
+    return this.http.post<Candidat>(`${this.apiUrl}/add`, candidat);
   }
 }

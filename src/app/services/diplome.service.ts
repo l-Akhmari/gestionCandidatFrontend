@@ -11,17 +11,13 @@ import {Fichier} from "../models/Fichier.model";
 })
 
 export class DiplomeService {
-  private apiUrl = 'http://localhost:8085/diplome';
+
+    private apiUrl = 'http://localhost:8085/diplome';
   constructor(private http: HttpClient) {}
 
-  saveDiplome(diplome: Diplome, candidat: Candidat, fichier: Fichier): Observable<Diplome> {
-    const body = {
-      diplome: diplome,
-      candidatDto: candidat,
-      fichierDto: fichier
-    };
+  addDiplome(diplome: Diplome): Observable<Diplome> {
 
-    return this.http.post<Diplome>(`${this.apiUrl}/add`, body);
+    return this.http.post<Diplome>(`${this.apiUrl}/add`, diplome);
   }
 
 

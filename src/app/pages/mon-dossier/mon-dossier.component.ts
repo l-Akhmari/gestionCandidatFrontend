@@ -9,6 +9,7 @@ import {Observable} from "rxjs";
 import {CandidatService} from "../../services/candidat.service";
 import {Diplome} from "../../models/Diplome.model";
 import {Fichier} from "../../models/Fichier.model";
+import {FichierService} from "../../services/fichier.service";
 
 //import {diplome} from "../../models/diplome.model"
 
@@ -27,7 +28,8 @@ export class MonDossierComponent implements OnInit{
     private elementRef: ElementRef,
     private renderer: Renderer2,
     private diplomeService: DiplomeService,
-    private candidatService : CandidatService
+    private candidatService : CandidatService,
+    private fichierService : FichierService
   ) { }
 
   step1: boolean = true;
@@ -54,7 +56,10 @@ export class MonDossierComponent implements OnInit{
   };
   public diplome : Diplome[] = [];
   public diplomeCandidat! : Diplome;
-  public fichier! : Fichier;
+  public fichier : Fichier={
+    id:"aa",
+    chemin:"chemin"
+  };
   candidatFormGroup: FormGroup = new FormGroup({
     name: new FormControl("", [Validators.required]),
     prenom: new FormControl("", [Validators.required]),
@@ -93,10 +98,17 @@ export class MonDossierComponent implements OnInit{
     this.candidat.ville = this.candidatFormGroup.get('ville')?.value;
     this.candidat.admis = false;
     console.log('hey log:', this.candidat);
-
-
-
-
+    this.candidatService.saveCandidat(this.candidat).subscribe(
+      (newCandidat) => {
+        console.log('Candidat enregistré:', newCandidat);
+        this.candidat = { ...newCandidat };
+        // Traiter la réponse après l'enregistrement réussi (par exemple, afficher un message de succès)
+      },
+      (error) => {
+        console.error('Erreur lors de l\'enregistrement du candidat:', error);
+        // Traiter l'erreur (par exemple, afficher un message d'erreur)
+      }
+    );
   }
 
   diplomeFormGroup: FormGroup = new FormGroup({
@@ -165,28 +177,48 @@ export class MonDossierComponent implements OnInit{
   ngOnInit(): void {
     //this.getCandidats();
   }
-
   enregisterCandidature() {
+    this.handleSuivant();
     this.fichier = {
       id: "ff",
       chemin: this.diplomeFormGroup.value.fichier
     };
-
-    // Create an instance of 'Diplome' for the 'diplomeCandidat' property
     this.diplomeCandidat = {
-      id: 1, // Assign the appropriate value
+      id: 1, // Assigner la valeur appropriée
       typeDiplome: this.diplomeFormGroup.get('typeDiplome')?.value,
       specialiteDiplome: this.diplomeFormGroup.get("specialite")?.value,
       anneeObtention: this.diplomeFormGroup.value.anneeObtention,
       etablissement: this.diplomeFormGroup.value.etablissement,
-      candidat: this.candidat,
-      fichier: this.fichier
+      candidatDto: this.candidat,
+      fichierDto: this.fichier
     };
+    this.fichierService.addFichier(this.fichier).subscribe(
+      (newFichier) => {
+        console.log('Fichier enregistré:', newFichier);
+        this.fichier = { ...newFichier };
+        this.diplomeCandidat.fichierDto=this.fichier;
+        this.diplomeCandidat.candidatDto=this.candidat;
+        this.enregistrerDiplome();
+      },
+      (error) => {
+        console.error('Erreur lors de l\'enregistrement du fichier:', error);
+      }
+    );
+    console.log(this.fichier);
+  }
 
-    // Perform any necessary operations with the 'candidat' and 'diplomeCandidat' data
+  private enregistrerDiplome() {
+
+
     console.log("diplomeCandidat:", this.diplomeCandidat);
 
-
-    }
-
+    this.diplomeService.addDiplome(this.diplomeCandidat).subscribe(
+      (diplome: Diplome) => {
+        console.log('Enregistrement réussi !');
+      },
+      (error) => {
+        console.error('Erreur lors de l\'enregistrement du diplome:', error);
+      }
+    );
   }
+}

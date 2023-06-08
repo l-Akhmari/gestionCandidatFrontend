@@ -7,8 +7,8 @@ export interface Diplome {
   specialiteDiplome: string;
   anneeObtention: Date;
   etablissement: string;
-  candidat: Candidat;
+  candidatDto: Candidat;
   // filieresDto: FiliereDto[];
-  fichier: Fichier;
+  fichierDto: Fichier;
   // notesSemesterDto: NotesSemesterDto[];
 }
