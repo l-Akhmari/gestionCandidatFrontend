@@ -1,4 +1,4 @@
-import {Diplome} from "./diplome.model";
+import {Diplome} from "./Diplome.model";
 
 export interface noteSemester{
    idNotes : number;

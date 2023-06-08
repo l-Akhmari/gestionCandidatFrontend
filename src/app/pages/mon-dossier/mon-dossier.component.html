@@ -26,43 +26,30 @@
                 <div class="card-body">
                   <div class="position-relative m-4">
                     <div class="progress" role="progressbar" aria-label="Progress" aria-valuenow="50" aria-valuemin="0"
-                      aria-valuemax="100" style="height: 1px;">
+                         aria-valuemax="100" style="height: 1px;">
                       <div class="progress-bar" style="width: 0%"></div>
                     </div>
                     <button type="button" id="st1"
-                      class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-info "
-                      style="width: 2rem; height:2rem;">1</button>
+                            class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-info "
+                            style="width: 2rem; height:2rem;">1</button>
                     <button type="button" id="st2"
-                      class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-secondary "
-                      style="width: 2rem; height:2rem;">2</button>
+                            class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-secondary "
+                            style="width: 2rem; height:2rem;">2</button>
                   </div>
                   <br>
                   <h4 class="card-title">Remplir les informations</h4>
 
-                  <form class="form-sample" *ngIf="step1" [formGroup]="candidatFormGroup" (submit)="handleSuivant()">
+                  <form class="form-sample" *ngIf="step1" [formGroup]="candidatFormGroup" (click)="handleSuivant()">
                     <p class="card-description"> Informations personnelles</p>
 
-                      <table>
-                        <thead>
-                        <th>username</th> <th>adresse</th> <th>adresse</th>
-                        </thead>
-                        <tbody *ngFor="let candidat of candidats">
-                        <tr>
-                          <td>{{candidat.cne}}</td>
-                          <td>{{candidat.Adresse}}</td>
-                          <td>ffhfhfhfhfhfhfh</td>
-                        </tr>
-
-                        </tbody>
-                      </table>
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
                           <label htmlFor="nom" class="col-sm-3 col-form-label">Nom <span
-                              class="text-danger">*</span></label>
+                            class="text-danger">*</span></label>
                           <div class="col-sm-9">
                             <input type="text" required="" class="form-control" pInputText id="nom"
-                              aria-describedby="username-help" placeholder="Nom" formControlName="nom" />
+                                   aria-describedby="username-help" placeholder="Nom" formControlName="name" />
                           </div>
                         </div>
                       </div>
@@ -70,10 +57,10 @@
                       <div class="col-md-6">
                         <div class="form-group row">
                           <label htmlFor="Prenom" class="col-sm-3 col-form-label">Prénom <span
-                              class="text-danger">*</span></label>
+                            class="text-danger">*</span></label>
                           <div class="col-sm-9">
                             <input type="text" required="" class="form-control" pInputText id="Prenom"
-                              aria-describedby="username-help" placeholder="Prenom" formControlName="prenom" />
+                                   aria-describedby="username-help" placeholder="Prenom" formControlName="prenom" />
                           </div>
                         </div>
                       </div>
@@ -83,10 +70,10 @@
                       <div class="col-md-6">
                         <div class="form-group row">
                           <label htmlFor="email" class="col-sm-3 col-form-label">Email <span
-                              class="text-danger">*</span></label>
+                            class="text-danger">*</span></label>
                           <div class="col-sm-9">
                             <input type="text" required="" class="form-control" pInputText id="email"
-                              aria-describedby="username-help" placeholder="Email" formControlName="email" />
+                                   aria-describedby="username-help" placeholder="Email" formControlName="email" />
                           </div>
                         </div>
                       </div>
@@ -94,10 +81,10 @@
                       <div class="col-md-6">
                         <div class="form-group row">
                           <label htmlFor="adresse" class="col-sm-3 col-form-label">Adresse<span
-                              class="text-danger">*</span></label>
+                            class="text-danger">*</span></label>
                           <div class="col-sm-9">
                             <input type="text" required="" class="form-control" pInputText id="adresse"
-                              aria-describedby="username-help" placeholder="Adresse" formControlName="adresse" />
+                                   aria-describedby="username-help" placeholder="Adresse" formControlName="adresse" />
                           </div>
                         </div>
                       </div>
@@ -107,10 +94,10 @@
                       <div class="col-md-6">
                         <div class="form-group row">
                           <label htmlFor="cin" class="col-sm-3 col-form-label">CIN <span
-                              class="text-danger">*</span></label>
+                            class="text-danger">*</span></label>
                           <div class="col-sm-9">
                             <input type="text" required="" class="form-control" pInputText id="cin"
-                              aria-describedby="username-help" placeholder="CIN" formControlName="cin" />
+                                   aria-describedby="username-help" placeholder="CIN" formControlName="cin" />
                           </div>
                         </div>
                       </div>
@@ -118,10 +105,10 @@
                       <div class="col-md-6">
                         <div class="form-group row">
                           <label htmlFor="cne" class="col-sm-3 col-form-label">CNE <span
-                              class="text-danger">*</span></label>
+                            class="text-danger">*</span></label>
                           <div class="col-sm-9">
                             <input type="text" required="" class="form-control" pInputText id="cne"
-                              aria-describedby="username-help" placeholder="CNE" formControlName="cne" />
+                                   aria-describedby="username-help" placeholder="CNE" formControlName="cne" />
                           </div>
                         </div>
                       </div>
@@ -130,20 +117,20 @@
                       <div class="col-md-6">
                         <div class="form-group row">
                           <label htmlFor="telephone" class="col-sm-3 col-form-label">Telephone <span
-                              class="text-danger">*</span></label>
+                            class="text-danger">*</span></label>
                           <div class="col-sm-9">
                             <input type="text" required="" class="form-control" pInputText id="telephone"
-                              aria-describedby="username-help" placeholder="Telephone" formControlName="telephone" />
+                                   aria-describedby="username-help" placeholder="Telephone" formControlName="telephone" />
                           </div>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
                           <label htmlFor="ville" class="col-sm-3 col-form-label">Ville <span
-                              class="text-danger">*</span></label>
+                            class="text-danger">*</span></label>
                           <div class="col-sm-9">
                             <input type="text" required="" class="form-control" pInputText id="ville"
-                              aria-describedby="username-help" placeholder="Ville" formControlName="ville" />
+                                   aria-describedby="username-help" placeholder="Ville" formControlName="ville" />
                           </div>
                         </div>
                       </div>
@@ -154,7 +141,7 @@
                   </form>
 
                   <p-dialog header="Ajouter Diplome" [(visible)]="visible" [breakpoints]="{ '960px': '75vw' }"
-                    [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+                            [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
                     <div class="card">
                       <div class="card-body">
                         <form class="form-sample" [formGroup]="diplomeFormGroup">
@@ -163,10 +150,10 @@
                             <div class="col-md-12">
                               <div class="form-group row">
                                 <label htmlFor="typediplome" class="col-sm-3 col-form-label">Type de diplome <span
-                                    class="text-danger">*</span></label>
+                                  class="text-danger">*</span></label>
                                 <div class="col-sm-9">
                                   <select formControlName="typeDiplome" class="form-control form-control-sm" required
-                                    id="typediplome">
+                                          id="typediplome">
                                     <option value="">---Sélectionner---</option>
                                     <option value="DUT">DUT</option>
                                     <option value="DEUG">DEUG</option>
@@ -182,7 +169,7 @@
                             <div class="col-md-12">
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Spécialité <span
-                                    class="text-danger">*</span></label>
+                                  class="text-danger">*</span></label>
                                 <div class="col-sm-9">
                                   <input type="text" required formControlName="specialite" class="form-control" />
                                 </div>
@@ -193,7 +180,7 @@
                             <div class="col-md-12">
                               <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Année d'obtention <span
-                                    class="text-danger">*</span></label>
+                                  class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                   <input type="text" formControlName="anneeObtention" class="form-control" />
                                 </div>
@@ -202,7 +189,7 @@
                             <div class="col-md-12">
                               <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Établissement <span
-                                    class="text-danger">*</span></label>
+                                  class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                   <input type="text" formControlName="etablissement" class="form-control" />
                                 </div>
@@ -225,7 +212,7 @@
                     </div>
                     <div class="d-flex justify-content-end w-100 " style="flex-wrap: wrap;">
                       <button class="btn btn-gradient-danger me-2 mt-2">Annuler</button>
-                      <button class="btn btn-gradient-info me-2 mt-2">Enregistrer</button>
+                      <button class="btn btn-gradient-info me-2 mt-2" (click)="enregisterCandidature()">Enregistrer</button>
                     </div>
 
                   </p-dialog>
@@ -243,31 +230,31 @@
                     <div class="table-responsive">
                       <table class="table">
                         <thead>
-                          <tr>
-                            <th> # </th>
-                            <th> Type de diplome </th>
-                            <th> Spécialité </th>
-                            <th> Année d'obtention </th>
-                            <th> Établissement </th>
-                            <th> Action </th>
-                          </tr>
+                        <tr>
+                          <th> # </th>
+                          <th> Type de diplome </th>
+                          <th> Spécialité </th>
+                          <th> Année d'obtention </th>
+                          <th> Établissement </th>
+                          <th> Action </th>
+                        </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                              <a class="badge badge-success " style="cursor: pointer;border-radius: 10px;"><i
-                                  class="mdi mdi-file-document"></i>
-                                Modifier</a>
-                              <a class="badge badge-danger mx-2" style="cursor: pointer;border-radius: 10px;"><i
-                                  class="mdi mdi-delete"></i>
-                                Supprimer</a>
-                            </td>
-                          </tr>
+                        <tr>
+                          <td>1</td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td>
+                            <a class="badge badge-success " style="cursor: pointer;border-radius: 10px;"><i
+                              class="mdi mdi-file-document"></i>
+                              Modifier</a>
+                            <a class="badge badge-danger mx-2" style="cursor: pointer;border-radius: 10px;"><i
+                              class="mdi mdi-delete"></i>
+                              Supprimer</a>
+                          </td>
+                        </tr>
                         </tbody>
                       </table>
                     </div>
@@ -275,7 +262,7 @@
                   <div class="d-flex justify-content-end">
                     <button *ngIf="step1" class="btn btn-gradient-info me-2" (click)="Suivant()">Suivant</button>
                     <button *ngIf="step2" class="btn btn-gradient-secondary me-2" (click)="Back()">Précédent</button>
-                    <button *ngIf="step2" class="btn btn-gradient-info me-2">Enregistrer</button>
+                    <button *ngIf="step2" class="btn btn-gradient-info me-2">Enregistrerr</button>
                   </div>
 
                 </div>

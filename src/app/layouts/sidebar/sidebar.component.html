@@ -29,13 +29,13 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" *ngIf="currentUser.role != 'candidat'" :href="'/' + currentUser.role + '/'">
+            <a class="nav-link" *ngIf="currentUser.role != 'candidat'" :href="/candidat/mesCandidatures">
                 <span class="menu-title">Mes candidatures</span>
                 <i class="mdi mdi-folder-plus  menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" *ngIf="currentUser.role != 'candidat'" href="/{{currentUser.role }}/MonDossier">
+            <a class="nav-link"  href="/candidat/MonDossier">
                 <span class="menu-title">Mon dossier</span>
                 <i class="mdi mdi-folder  menu-icon"></i>
             </a>

@@ -3,10 +3,12 @@ import { FormArray, FormControl, FormGroup, Validator, Validators } from "@angul
 import { Router } from "@angular/router";
 import { MessageService } from "primeng/api";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import { Candidat } from "../../models/candidat.model";
+import { Candidat } from "../../models/Candidat.model";
 import {DiplomeService} from "../../services/diplome.service";
 import {Observable} from "rxjs";
 import {CandidatService} from "../../services/candidat.service";
+import {Diplome} from "../../models/Diplome.model";
+import {Fichier} from "../../models/Fichier.model";
 //import {diplome} from "../../models/diplome.model"
 
 
@@ -35,9 +37,25 @@ export class MonDossierComponent implements OnInit{
 //candida: candidat = new candidat();
 
   public candidats: Candidat[] = [];
-  public candidat!: Candidat;
+  public candidat: Candidat = {
+    id: '1',
+    cin: '123456789',
+    nom: 'John',
+    prenom: 'Doe',
+    addresse: '123 Main St',
+    email: 'johndoe@example.com',
+    dateNaissance: new Date('1990-01-01'),
+    telephone: '1234567890',
+    mdp: 'password123',
+    cne: 'A1234567',
+    ville: 'City',
+    admis: true
+  };
+  public diplome : Diplome[] = [];
+  public diplomeCandidat! : Diplome;
+  public fichier! : Fichier;
   candidatFormGroup: FormGroup = new FormGroup({
-    username: new FormControl("", [Validators.required]),
+    name: new FormControl("", [Validators.required]),
     prenom: new FormControl("", [Validators.required]),
     cin: new FormControl("", [Validators.required]),
     cne: new FormControl("", [Validators.required]),
@@ -45,7 +63,7 @@ export class MonDossierComponent implements OnInit{
     telephone: new FormControl("", [Validators.required]),
     adresse: new FormControl("", [Validators.required]),
     ville: new FormControl("", [Validators.required]),
-    diplome: new FormArray([this.getDiplomeFields()])
+   // diplome: new FormArray([this.getDiplomeFields()])
   });
   public getCandidats(): void {
     this.candidatService.getAllCandidats().subscribe(
@@ -63,17 +81,19 @@ export class MonDossierComponent implements OnInit{
 
 
   handleSuivant(){
+    this.candidat.nom = this.candidatFormGroup.get('name')?.value;
+    this.candidat.prenom = this.candidatFormGroup.get('prenom')?.value;
+    this.candidat.cin = this.candidatFormGroup.get('cin')?.value;
+    this.candidat.cne = this.candidatFormGroup.get('cne')?.value;
+    this.candidat.email = this.candidatFormGroup.get('email')?.value;
+    this.candidat.telephone = this.candidatFormGroup.get('telephone')?.value;
+    this.candidat.addresse = this.candidatFormGroup.get('adresse')?.value;
+    this.candidat.mdp = '111';
+    this.candidat.ville = this.candidatFormGroup.get('ville')?.value;
+    this.candidat.admis = false;
+    console.log('hey log:', this.candidat);
 
-    this.candidat.nom = this.candidatFormGroup.value.username;
-    this.candidat.Prenom= this.candidatFormGroup.value.prenom;
-    this.candidat.CNI = this.candidatFormGroup.value.cin;
-    this.candidat.cne = this.candidatFormGroup.value.cne;
-    this.candidat.Email = this.candidatFormGroup.value.email;
-    this.candidat.Telephone = this.candidatFormGroup.value.telephone;
-    this.candidat.Adresse= this.candidatFormGroup.value.adresse;
-    this.candidat.mdp="111";
-    this.candidat.ville=this.candidatFormGroup.value.ville;
-    this.candidat.admis=false;
+
 
 
   }
@@ -83,12 +103,13 @@ export class MonDossierComponent implements OnInit{
     specialite: new FormControl("", [Validators.required]),
     anneeObtention: new FormControl("", [Validators.required]),
     etablissement: new FormControl("", [Validators.required]),
+    fichier: new FormControl("", [Validators.required]),
 
   })
 
-  dipArr() {
-    return this.candidatFormGroup.get('diplome') as FormArray;
-  }
+  //dipArr() {
+    //return this.candidatFormGroup.get('diplome') as FormArray;
+  //}
   Suivant() {
     this.step1 = false;
     this.step2 = true;
@@ -114,18 +135,18 @@ export class MonDossierComponent implements OnInit{
     this.visible = true;
   }
 
-  getDiplomeFields(): FormGroup {
+  /*getDiplomeFields(): FormGroup {
     return new FormGroup({
-      titre: new FormControl("", [Validators.required]),
+      typeDiplome: new FormControl("", [Validators.required]),
       specialite: new FormControl("", [Validators.required]),
-      dateObtention: new FormControl("", [Validators.required]),
+      anneeObtention: new FormControl("", [Validators.required]),
       etablissement: new FormControl("", [Validators.required]),
-      file: new FormControl("", [Validators.required])
+      fichier: new FormControl("", [Validators.required])
 
     });
 
-  }
-  addDiploma() {
+  }*/
+  /*addDiploma() {
 
     this.dipArr().push(this.getDiplomeFields());
     console.log(this.candidatFormGroup);
@@ -138,9 +159,32 @@ export class MonDossierComponent implements OnInit{
     // const control=<FormArray>this.candidatFormGroup.controls['diplome'];
     // control.removeAt(i);
 
-  }
+  }*/
 
   ngOnInit(): void {
     this.getCandidats();
   }
-}
+
+  enregisterCandidature() {
+    this.fichier = {
+      id: "ff",
+      chemin: this.diplomeFormGroup.value.fichier
+    };
+
+    // Create an instance of 'Diplome' for the 'diplomeCandidat' property
+    this.diplomeCandidat = {
+      id: 1, // Assign the appropriate value
+      typeDiplome: this.diplomeFormGroup.get('typeDiplome')?.value,
+      specialiteDiplome: this.diplomeFormGroup.get("specialite")?.value,
+      anneeObtention: this.diplomeFormGroup.value.anneeObtention,
+      etablissement: this.diplomeFormGroup.value.etablissement,
+      candidat: this.candidat,
+      fichier: this.fichier
+    };
+
+    // Perform any necessary operations with the 'candidat' and 'diplomeCandidat' data
+    console.log("diplomeCandidat:", this.diplomeCandidat);
+
+    }
+
+  }
