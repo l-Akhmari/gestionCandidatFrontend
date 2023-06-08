@@ -3,38 +3,30 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment"
 import {Observable} from "rxjs";
 import {Diplome} from "../models/Diplome.model"
+import {Candidat} from "../models/Candidat.model";
+import {Fichier} from "../models/Fichier.model";
 
 @Injectable({
   providedIn: 'root'
 })
 
-/*export class DiplomeService {
+export class DiplomeService {
+  private apiUrl = 'http://localhost:8085/diplome';
+  constructor(private http: HttpClient) {}
 
-  constructor(private http : HttpClient) { }
-  public addCandidat(username : string, prenom : string, cin:string, cne:string, email:string, telephone:string, ville:string, adresse:string,admis:boolean,dateNaissance:Date,mdp:string){
-    let data={nom : username, prenom : prenom, cin : cin, cne:cne, email : email, telephone : telephone, dateNaissance:null,mdp: null,ville:null,admis:null}
-    return this.http.post(environment.backendHost+"/candidat/add",data);
+  saveDiplome(diplome: Diplome, candidat: Candidat, fichier: Fichier): Observable<Diplome> {
+    const body = {
+      diplome: diplome,
+      candidatDto: candidat,
+      fichierDto: fichier
+    };
+
+    return this.http.post<Diplome>(`${this.apiUrl}/add`, body);
   }
 
-}*/
-export class DiplomeService {
- // private apiServerUrl = environment.backendHost;
 
-  constructor(private http : HttpClient) { }
- /* public addCandidat(username : string, prenom : string, cin:string, cne:string, email:string, telephone:string, ville:string, adresse:string,admis:boolean,dateNaissance:Date,mdp:string) {
-    let data = {
-      nom: username,
-      prenom: prenom,
-      cin: cin,
-      cne: cne,
-      email: email,
-      telephone: telephone,
-      dateNaissance: null,
-      mdp: null,
-      ville: null,
-      admis: null
-    }
-    return this.http.post(`${this.apiServerUrl}/candidat/add`, data);
-  }*/
+
 
 }
+
+
