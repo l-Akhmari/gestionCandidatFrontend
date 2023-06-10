@@ -10,6 +10,11 @@ import {CandidatService} from "../../services/candidat.service";
 import {Diplome} from "../../models/Diplome.model";
 import {Fichier} from "../../models/Fichier.model";
 import {FichierService} from "../../services/fichier.service";
+import { ActivatedRoute } from '@angular/router';
+import {FiliereService} from "../../services/filiere.service";
+import {Filiere} from "../../models/Filiere.model";
+import { Subscription } from 'rxjs';
+
 
 //import {diplome} from "../../models/diplome.model"
 
@@ -29,7 +34,9 @@ export class MonDossierComponent implements OnInit{
     private renderer: Renderer2,
     private diplomeService: DiplomeService,
     private candidatService : CandidatService,
-    private fichierService : FichierService
+    private fichierService : FichierService,
+    private route: ActivatedRoute,
+    private filierService : FiliereService
   ) { }
 
   step1: boolean = true;
@@ -57,6 +64,7 @@ export class MonDossierComponent implements OnInit{
   public diplome : Diplome[] = [];
   public diplomeCandidat! : Diplome;
   public candidatTest!:Candidat;
+  public filier! : Filiere;
   public fichier : Fichier={
     id:"aa",
     chemin:"chemin"
@@ -179,8 +187,22 @@ export class MonDossierComponent implements OnInit{
 
   }*/
 
+  private subscription! : Subscription;
+
   ngOnInit(): void {
-    //this.getCandidats();
+    this.route.queryParams.subscribe(params => {
+      const filiereId = params['filiereId'];
+      this.subscription = this.filierService.getFiliereById(filiereId)
+        .subscribe(filiere => {
+          this.filier = filiere;
+        });
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   enregisterCandidature() {
@@ -196,7 +218,8 @@ export class MonDossierComponent implements OnInit{
       anneeObtention: this.diplomeFormGroup.value.anneeObtention,
       etablissement: this.diplomeFormGroup.value.etablissement,
       candidatDto: this.candidat,
-      fichierDto: this.fichier
+      fichierDto: this.fichier,
+      filiereDto: this.filier
     };
     this.fichierService.addFichier(this.fichier).subscribe(
       (newFichier) => {
@@ -204,6 +227,7 @@ export class MonDossierComponent implements OnInit{
         this.fichier = { ...newFichier };
         this.diplomeCandidat.fichierDto=this.fichier;
         this.diplomeCandidat.candidatDto=this.candidat;
+      this.diplomeCandidat.filiereDto=this.filier;
         this.enregistrerDiplome();
       },
       (error : any) => {

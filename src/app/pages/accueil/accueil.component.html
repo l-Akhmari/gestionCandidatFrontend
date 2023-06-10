@@ -12,10 +12,18 @@
       </div>
       <ng-template #formationInitialeContent>
         <div *ngIf="filieresFormationInitiale.length > 0; else noFormationInitialeContent">
+<!--
           <h2>Liste des filières Formation Initiale :</h2>
-          <ul>
+-->
+         <!-- <ul>
             <li *ngFor="let filiere of filieresFormationInitiale">{{ filiere.intitule }}</li>
-          </ul>
+          </ul>-->
+          <div *ngFor="let filiere of filieresFormationInitiale">
+            <h3 class="filiere-intitule">{{ filiere.intitule }}</h3>
+            <p><strong>Diplôme : </strong>{{ filiere.typeDiplomeAObtenir }}</p>
+            <p><strong>Département : </strong>{{ filiere.departementDto.intitule }}</p>
+            <button class="button" (click)="inscrire(filiere)">S'inscrire</button>
+          </div>
         </div>
         <ng-template #noFormationInitialeContent>
           <p>Aucune filière Formation Initiale disponible.</p>
@@ -29,10 +37,18 @@
       </div>
       <ng-template #formationContinueContent>
         <div *ngIf="filieresFormationContinue.length > 0; else noFormationContinueContent">
+<!--
           <h2>Liste des filières Formation Continue :</h2>
-          <ul>
+-->
+          <!--<ul>
             <li *ngFor="let filiere of filieresFormationContinue">{{ filiere.intitule }}</li>
-          </ul>
+          </ul>-->
+          <div *ngFor="let filiere of filieresFormationContinue">
+            <h3 class="filiere-intitule">{{ filiere.intitule }}</h3>
+            <p><strong>Diplôme : </strong>{{ filiere.typeDiplomeAObtenir }}</p>
+            <p><strong>Département : </strong>{{ filiere.departementDto.intitule }}</p>
+            <button class="button" (click)="inscrire(filiere)">S'inscrire</button>
+          </div>
         </div>
         <ng-template #noFormationContinueContent>
           <p>Aucune filière Formation Continue disponible.</p>
