@@ -239,6 +239,7 @@ export class MonDossierComponent implements OnInit{
           // Gérez les erreurs ici, par exemple, affichez un message d'erreur à l'utilisateur
         });
     }
+
   }
 
   private enregistrerDiplome() {
