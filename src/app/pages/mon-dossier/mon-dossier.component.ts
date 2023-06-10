@@ -224,7 +224,7 @@ export class MonDossierComponent implements OnInit{
         this.fichier = { ...newFichier };
         this.diplomeCandidat.fichierDto=this.fichier;
         this.diplomeCandidat.candidatDto=this.candidat;
-      this.diplomeCandidat.filiereDto=this.filier;
+        this.diplomeCandidat.filiereDto=this.filier;
         this.enregistrerDiplome();
       },
       (error : any) => {
