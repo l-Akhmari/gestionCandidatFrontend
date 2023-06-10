@@ -7,357 +7,41 @@
 
   <p-tabView>
     <p-tabPanel header="Formation Initiale">
-      <p-table [value]="formations" sortField="group"  [scrollable]="true" scrollHeight="1000px" rowGroupMode="subheader" groupRowsBy="group" [tableStyle]="{'min-width': '60rem'}" >
-        <ng-template pTemplate="groupheader" let-formation >
-         <tr pRowGroupHeader>
-            <td colspan="5">
-              <span [ngStyle]="{ color: 'var(--highlight-text-color)'}" class="font-bold ml-2">{{formation.group}}</span>
-            </td>
-         </tr>
+      <div *ngIf="loadingFormationInitiale; else formationInitialeContent">
+        Loading Formation Initiale...
+      </div>
+      <ng-template #formationInitialeContent>
+        <div *ngIf="filieresFormationInitiale.length > 0; else noFormationInitialeContent">
+          <h2>Liste des filières Formation Initiale :</h2>
+          <ul>
+            <li *ngFor="let filiere of filieresFormationInitiale">{{ filiere.intitule }}</li>
+          </ul>
+        </div>
+        <ng-template #noFormationInitialeContent>
+          <p>Aucune filière Formation Initiale disponible.</p>
         </ng-template>
-        <ng-template pTemplate="body" let-formation let-rowIndex="rowIndex"   >
-          <tr>
-            <td >
-              {{formation.label}}
-            </td>
-            <p-button label="S'inscrir" styleClass="p-button-outlined p-button-secondary" (click)="show()" class="p-button-success" ></p-button>
-          </tr>
-        </ng-template>
-
-
-      </p-table>
+      </ng-template>
     </p-tabPanel>
-    <p-tabPanel header="Formation continue">
-      <p-tabView [activeIndex]="2" styleClass="my-tabview" (onChange)="onTabChange($event)">
-        <p-tabPanel header="Master d'Université" >
-          <p-accordion class="w-full" >
-            <p-accordionTab>
-              <ng-template pTemplate="header">
-                <div class="flex align-items-center">
-                  <span class="vertical-align-middle">CGIF - Contrôle de Gestion et Ingénierie Financière</span>
-                </div>
-              </ng-template>
-              <ng-template pTemplate="content">
 
-                <div class="views-field views-field-field-departement departement">
-                  <div class="views-field views-field-field-intitule-diplome">
-                            <span
-                              class="views-label views-label-field-intitule-diplome diplome_field ">Diplôme : </span>
-                    <span class="field-content filiere_etiquette">Master d'Université</span>
-                    <div class="views-field views-field-field-type-formation">
-                              <span
-                                class="views-label views-label-field-type-formation type_formation_label">Type : </span>
-                      <span class="field-content filiere_etiquette">Formation Continue</span>
-                    </div>
-                  </div>
-                  <span
-                    class="views-label views-label-field-departement departement_field">Département : </span>
-                  <span class="field-content filiere_etiquette"><a
-                  ></a>Génie Economie et Gestion</span>
-                </div>
-                <br>
-                <p-button label="S'inscrire" styleClass="p-button-rounded p-button-secondary" >
-                </p-button>
-              </ng-template>
-            </p-accordionTab>
-            <p-accordionTab>
-              <ng-template pTemplate="header">
-                <div class="flex align-items-center">
-                  <span class="vertical-align-middle">II-BDCC - Ingénierie Informatique, Big Data et Cloud Computing </span>
-                </div>
-              </ng-template>
-              <ng-template pTemplate="content">
-
-                <div class="views-field views-field-field-departement departement">
-                  <div class="views-field views-field-field-intitule-diplome">
-                            <span
-                              class="views-label views-label-field-intitule-diplome diplome_field ">Diplôme : </span>
-                    <span class="field-content filiere_etiquette">Master d'Université</span>
-                    <div class="views-field views-field-field-type-formation">
-                              <span
-                                class="views-label views-label-field-type-formation type_formation_label">Type : </span>
-                      <span class="field-content filiere_etiquette">Formation Continue</span>
-                    </div>
-                  </div>
-                  <span
-                    class="views-label views-label-field-departement departement_field">Département : </span>
-                  <span class="field-content filiere_etiquette"><a
-                  ></a>Mathématiques et Informatique</span>
-                </div>
-                <br>
-                <p-button label="S'inscrire" styleClass="p-button-rounded p-button-secondary">
-                </p-button>
-              </ng-template>
-            </p-accordionTab>
-            <p-accordionTab>
-              <ng-template pTemplate="header">
-                <div class="flex align-items-center">
-                  <span class="vertical-align-middle">SDIA - Science des Données et Intelligence Artificielle </span>
-                </div>
-              </ng-template>
-              <ng-template pTemplate="content">
-
-                <div class="views-field views-field-field-departement departement">
-                  <div class="views-field views-field-field-intitule-diplome">
-                            <span
-                              class="views-label views-label-field-intitule-diplome diplome_field ">Diplôme : </span>
-                    <span class="field-content filiere_etiquette">Master d'Université</span>
-                    <div class="views-field views-field-field-type-formation">
-                              <span
-                                class="views-label views-label-field-type-formation type_formation_label">Type : </span>
-                      <span class="field-content filiere_etiquette">Formation Continue</span>
-                    </div>
-                  </div>
-                  <span
-                    class="views-label views-label-field-departement departement_field">Département : </span>
-                  <span class="field-content filiere_etiquette"><a
-                  ></a>Mathématiques et Informatique</span>
-                </div>
-                <p-button label="S'inscrire" styleClass="p-button-rounded p-button-secondary">
-                </p-button>
-              </ng-template>
-            </p-accordionTab>
-            <p-accordionTab>
-              <ng-template pTemplate="header" >
-                <div class="flex align-items-center">
-                  <span class="vertical-align-middle">GIL - Génie Industriel et Logistique [Accréditée]</span>
-                </div>
-              </ng-template>
-              <ng-template pTemplate="content">
-
-                <div class="views-field views-field-field-departement departement">
-                  <div class="views-field views-field-field-intitule-diplome">
-                            <span
-                              class="views-label views-label-field-intitule-diplome diplome_field ">Diplôme : </span>
-                    <span class="field-content filiere_etiquette">Master d'Université</span>
-                    <div class="views-field views-field-field-type-formation">
-                              <span
-                                class="views-label views-label-field-type-formation type_formation_label">Type : </span>
-                      <span class="field-content filiere_etiquette">Formation Continue</span>
-                    </div>
-                  </div>
-                  <span
-                    class="views-label views-label-field-departement departement_field">Département : </span>
-                  <span class="field-content filiere_etiquette"><a
-                  ></a>Génie Mécanique</span>
-                </div>
-                <br>
-                <p-button label="S'inscrire" styleClass="p-button-rounded p-button-secondary">
-                </p-button>
-              </ng-template>
-            </p-accordionTab>
-          </p-accordion>
-        </p-tabPanel>
-
-        <p-tabPanel header="Licence d'Université">
-          <p-accordion class="w-full" >
-            <p-accordionTab>
-              <ng-template pTemplate="header">
-                <div class="flex align-items-center">
-                  <span class="vertical-align-middle">CVM - Commerce, Vente et Marketing </span>
-                </div>
-              </ng-template>
-              <ng-template pTemplate="content">
-
-                <div class="views-field views-field-field-departement departement">
-                  <div class="views-field views-field-field-intitule-diplome">
-                            <span
-                              class="views-label views-label-field-intitule-diplome diplome_field ">Diplôme : </span>
-                    <span class="field-content filiere_etiquette"> Licence d'Université</span>
-                    <div class="views-field views-field-field-type-formation">
-                              <span
-                                class="views-label views-label-field-type-formation type_formation_label">Type : </span>
-                      <span class="field-content filiere_etiquette">Formation Continue</span>
-                    </div>
-                  </div>
-                  <span
-                    class="views-label views-label-field-departement departement_field">Département : </span>
-                  <span class="field-content filiere_etiquette"><a
-                  ></a>Sciences et Techniques Administratives et Ingénierie des Compétences</span>
-                </div>
-                <br>
-                <p-button label="S'inscrire" styleClass="p-button-rounded p-button-secondary" >
-                </p-button>
-              </ng-template>
-            </p-accordionTab>
-            <p-accordionTab>
-            <ng-template pTemplate="header">
-              <div class="flex align-items-center">
-                <span class="vertical-align-middle">IDF - Ingénierie et Digitalisation de Formations  </span>
-              </div>
-            </ng-template>
-            <ng-template pTemplate="content">
-
-              <div class="views-field views-field-field-departement departement">
-                <div class="views-field views-field-field-intitule-diplome">
-                            <span
-                              class="views-label views-label-field-intitule-diplome diplome_field ">Diplôme : </span>
-                  <span class="field-content filiere_etiquette"> Licence d'Université</span>
-                  <div class="views-field views-field-field-type-formation">
-                              <span
-                                class="views-label views-label-field-type-formation type_formation_label">Type : </span>
-                    <span class="field-content filiere_etiquette">Formation Continue</span>
-                  </div>
-                </div>
-                <span
-                  class="views-label views-label-field-departement departement_field">Département : </span>
-                <span class="field-content filiere_etiquette"><a
-                ></a>Sciences et Techniques Administratives et Ingénierie des Compétences</span>
-              </div>
-              <br>
-              <p-button label="S'inscrire" styleClass="p-button-rounded p-button-secondary" >
-              </p-button>
-            </ng-template>
-          </p-accordionTab>
-            <p-accordionTab>
-            <ng-template pTemplate="header">
-              <div class="flex align-items-center">
-                <span class="vertical-align-middle">GFC - Gestion Financière et Comptable [Accréditée]  </span>
-              </div>
-            </ng-template>
-            <ng-template pTemplate="content">
-
-              <div class="views-field views-field-field-departement departement">
-                <div class="views-field views-field-field-intitule-diplome">
-                            <span
-                              class="views-label views-label-field-intitule-diplome diplome_field ">Diplôme : </span>
-                  <span class="field-content filiere_etiquette"> Licence d'Université</span>
-                  <div class="views-field views-field-field-type-formation">
-                              <span
-                                class="views-label views-label-field-type-formation type_formation_label">Type : </span>
-                    <span class="field-content filiere_etiquette">Formation Continue</span>
-                  </div>
-                </div>
-                <span
-                  class="views-label views-label-field-departement departement_field">Département : </span>
-                <span class="field-content filiere_etiquette"><a
-                ></a> Génie Economie et Gestion</span>
-              </div>
-              <br>
-              <p-button label="S'inscrire" styleClass="p-button-rounded p-button-secondary" >
-              </p-button>
-            </ng-template>
-          </p-accordionTab>
-            <p-accordionTab>
-            <ng-template pTemplate="header">
-              <div class="flex align-items-center">
-                <span class="vertical-align-middle">ACSRI - Administration et Cybersécurité des Systèmes et Réseaux Informatiques </span>
-              </div>
-            </ng-template>
-            <ng-template pTemplate="content">
-
-              <div class="views-field views-field-field-departement departement">
-                <div class="views-field views-field-field-intitule-diplome">
-                            <span
-                              class="views-label views-label-field-intitule-diplome diplome_field ">Diplôme : </span>
-                  <span class="field-content filiere_etiquette"> Licence d'Université</span>
-                  <div class="views-field views-field-field-type-formation">
-                              <span
-                                class="views-label views-label-field-type-formation type_formation_label">Type : </span>
-                    <span class="field-content filiere_etiquette">Formation Continue</span>
-                  </div>
-                </div>
-                <span
-                  class="views-label views-label-field-departement departement_field">Département : </span>
-                <span class="field-content filiere_etiquette"><a
-                ></a>Mathématiques et Informatique</span>
-              </div>
-              <br>
-              <p-button label="S'inscrire" styleClass="p-button-rounded p-button-secondary" >
-              </p-button>
-            </ng-template>
-          </p-accordionTab>
-            <p-accordionTab>
-            <ng-template pTemplate="header">
-              <div class="flex align-items-center">
-                <span class="vertical-align-middle">DWM - Développement Web et Mobile  </span>
-              </div>
-            </ng-template>
-            <ng-template pTemplate="content">
-
-              <div class="views-field views-field-field-departement departement">
-                <div class="views-field views-field-field-intitule-diplome">
-                            <span
-                              class="views-label views-label-field-intitule-diplome diplome_field ">Diplôme : </span>
-                  <span class="field-content filiere_etiquette"> Licence d'Université</span>
-                  <div class="views-field views-field-field-type-formation">
-                              <span
-                                class="views-label views-label-field-type-formation type_formation_label">Type : </span>
-                    <span class="field-content filiere_etiquette">Formation Continue</span>
-                  </div>
-                </div>
-                <span
-                  class="views-label views-label-field-departement departement_field">Département : </span>
-                <span class="field-content filiere_etiquette"><a
-                ></a>Mathématiques et Informatique</span>
-              </div>
-              <br>
-              <p-button label="S'inscrire" styleClass="p-button-rounded p-button-secondary" >
-              </p-button>
-            </ng-template>
-          </p-accordionTab>  <p-accordionTab>
-            <ng-template pTemplate="header">
-              <div class="flex align-items-center">
-                <span class="vertical-align-middle">GE - Génie Electrique </span>
-              </div>
-            </ng-template>
-            <ng-template pTemplate="content">
-
-              <div class="views-field views-field-field-departement departement">
-                <div class="views-field views-field-field-intitule-diplome">
-                            <span
-                              class="views-label views-label-field-intitule-diplome diplome_field ">Diplôme : </span>
-                  <span class="field-content filiere_etiquette"> Licence d'Université</span>
-                  <div class="views-field views-field-field-type-formation">
-                              <span
-                                class="views-label views-label-field-type-formation type_formation_label">Type : </span>
-                    <span class="field-content filiere_etiquette">Formation Continue</span>
-                  </div>
-                </div>
-                <span
-                  class="views-label views-label-field-departement departement_field">Département : </span>
-                <span class="field-content filiere_etiquette"><a
-                ></a>Génie Electrique</span>
-              </div>
-              <br>
-              <p-button label="S'inscrire" styleClass="p-button-rounded p-button-secondary" >
-              </p-button>
-            </ng-template>
-          </p-accordionTab>  <p-accordionTab>
-            <ng-template pTemplate="header">
-              <div class="flex align-items-center">
-                <span class="vertical-align-middle">GEAI - Génie Electrique et Automatisme Industriel </span>
-              </div>
-            </ng-template>
-            <ng-template pTemplate="content">
-
-              <div class="views-field views-field-field-departement departement">
-                <div class="views-field views-field-field-intitule-diplome">
-                            <span
-                              class="views-label views-label-field-intitule-diplome diplome_field ">Diplôme : </span>
-                  <span class="field-content filiere_etiquette"> Licence d'Université</span>
-                  <div class="views-field views-field-field-type-formation">
-                              <span
-                                class="views-label views-label-field-type-formation type_formation_label">Type : </span>
-                    <span class="field-content filiere_etiquette">Formation Continue</span>
-                  </div>
-                </div>
-                <span
-                  class="views-label views-label-field-departement departement_field">Département : </span>
-                <span class="field-content filiere_etiquette"><a
-                ></a>Génie Electrique</span>
-              </div>
-              <br>
-              <p-button label="S'inscrire" styleClass="p-button-rounded p-button-secondary" >
-              </p-button>
-            </ng-template>
-          </p-accordionTab>
-          </p-accordion>
-        </p-tabPanel>
-      </p-tabView>
-
+    <p-tabPanel header="Formation Continue">
+      <div *ngIf="loadingFormationContinue; else formationContinueContent">
+        Loading Formation Continue...
+      </div>
+      <ng-template #formationContinueContent>
+        <div *ngIf="filieresFormationContinue.length > 0; else noFormationContinueContent">
+          <h2>Liste des filières Formation Continue :</h2>
+          <ul>
+            <li *ngFor="let filiere of filieresFormationContinue">{{ filiere.intitule }}</li>
+          </ul>
+        </div>
+        <ng-template #noFormationContinueContent>
+          <p>Aucune filière Formation Continue disponible.</p>
+        </ng-template>
+      </ng-template>
     </p-tabPanel>
   </p-tabView>
 
+
+</div>
 </div>
 </div>

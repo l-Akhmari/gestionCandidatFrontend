@@ -56,6 +56,7 @@ export class MonDossierComponent implements OnInit{
   };
   public diplome : Diplome[] = [];
   public diplomeCandidat! : Diplome;
+  public candidatTest!:Candidat;
   public fichier : Fichier={
     id:"aa",
     chemin:"chemin"
@@ -98,17 +99,21 @@ export class MonDossierComponent implements OnInit{
     this.candidat.ville = this.candidatFormGroup.get('ville')?.value;
     this.candidat.admis = false;
     console.log('hey log:', this.candidat);
-    this.candidatService.saveCandidat(this.candidat).subscribe(
-      (newCandidat) => {
-        console.log('Candidat enregistré:', newCandidat);
-        this.candidat = { ...newCandidat };
-        // Traiter la réponse après l'enregistrement réussi (par exemple, afficher un message de succès)
-      },
-      (error) => {
-        console.error('Erreur lors de l\'enregistrement du candidat:', error);
-        // Traiter l'erreur (par exemple, afficher un message d'erreur)
-      }
-    );
+
+
+      this.candidatService.saveCandidat(this.candidat).subscribe(
+        (newCandidat) => {
+          console.log('Candidat enregistré:', newCandidat);
+          this.candidat = { ...newCandidat };
+          // Traiter la réponse après l'enregistrement réussi (par exemple, afficher un message de succès)
+        },
+        (error) => {
+          console.error('Erreur lors de l\'enregistrement du candidat:', error);
+          // Traiter l'erreur (par exemple, afficher un message d'erreur)
+        }
+      );
+
+
   }
 
   diplomeFormGroup: FormGroup = new FormGroup({
@@ -177,8 +182,9 @@ export class MonDossierComponent implements OnInit{
   ngOnInit(): void {
     //this.getCandidats();
   }
+
   enregisterCandidature() {
-    this.handleSuivant();
+      this.handleSuivant();
     this.fichier = {
       id: "ff",
       chemin: this.diplomeFormGroup.value.fichier
@@ -200,7 +206,7 @@ export class MonDossierComponent implements OnInit{
         this.diplomeCandidat.candidatDto=this.candidat;
         this.enregistrerDiplome();
       },
-      (error) => {
+      (error : any) => {
         console.error('Erreur lors de l\'enregistrement du fichier:', error);
       }
     );

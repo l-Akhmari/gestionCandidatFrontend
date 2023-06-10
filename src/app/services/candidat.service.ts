@@ -15,4 +15,7 @@ export class CandidatService {
   saveCandidat(candidat: Candidat): Observable<Candidat> {
     return this.http.post<Candidat>(`${this.apiUrl}/add`, candidat);
   }
+/*  getCandidatByCin(cin: string): Observable<Candidat> {
+    return this.http.get<Candidat>(`${this.apiUrl}/find/${cin}`);
+  }*/
 }
