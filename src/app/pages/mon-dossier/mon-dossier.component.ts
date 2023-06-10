@@ -51,20 +51,7 @@ export class MonDossierComponent implements OnInit{
 //candida: candidat = new candidat();
 
   public candidats: Candidat[] = [];
-  public candidat: Candidat = {
-    id: '1',
-    cin: '123456789',
-    nom: 'John',
-    prenom: 'Doe',
-    addresse: '123 Main St',
-    email: 'johndoe@example.com',
-    dateNaissance: new Date('1990-01-01'),
-    telephone: '1234567890',
-    mdp: 'password123',
-    cne: 'A1234567',
-    ville: 'City',
-    admis: true
-  };
+  public candidat!: Candidat;
   public diplome : Diplome[] = [];
   public diplomeCandidat! : Diplome;
   public candidatTest!:Candidat;
@@ -82,6 +69,11 @@ export class MonDossierComponent implements OnInit{
     telephone: new FormControl("", [Validators.required]),
     adresse: new FormControl("", [Validators.required]),
     ville: new FormControl("", [Validators.required]),
+    dateNaissance: new FormControl("", [Validators.required]),
+    bac: new FormControl("", [Validators.required]),
+    bacAnne: new FormControl("", [Validators.required]),
+    pays: new FormControl("", [Validators.required]),
+    paysObtentionBac: new FormControl("", [Validators.required]),
    // diplome: new FormArray([this.getDiplomeFields()])
   });
   /*public getCandidats(): void {
@@ -107,6 +99,11 @@ export class MonDossierComponent implements OnInit{
     this.candidat.email = this.candidatFormGroup.get('email')?.value;
     this.candidat.telephone = this.candidatFormGroup.get('telephone')?.value;
     this.candidat.addresse = this.candidatFormGroup.get('adresse')?.value;
+    this.candidat.dateNaissance = this.candidatFormGroup.get('dateNaissance')?.value;
+    this.candidat.bac = this.candidatFormGroup.get('bac')?.value;
+    this.candidat.bacAnneObtention = this.candidatFormGroup.get('bacAnne')?.value;
+    this.candidat.pays = this.candidatFormGroup.get('pays')?.value;
+    this.candidat.paysObtentionBac = this.candidatFormGroup.get('paysObtentionBac')?.value;
     this.candidat.mdp = '111';
     this.candidat.ville = this.candidatFormGroup.get('ville')?.value;
     this.candidat.admis = false;
