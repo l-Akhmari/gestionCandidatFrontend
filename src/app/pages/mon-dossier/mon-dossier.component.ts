@@ -41,6 +41,10 @@ export class MonDossierComponent implements OnInit{
 
   step1: boolean = true;
   step2: boolean = false;
+  progress: number = 0;
+  selectedFile: File | null = null;
+  successMessage: string = '';
+  errorMessage: string = '';
 
 //accountObservable! : Observable<diplome>
 
@@ -65,10 +69,10 @@ export class MonDossierComponent implements OnInit{
   public diplomeCandidat! : Diplome;
   public candidatTest!:Candidat;
   public filier! : Filiere;
-  public fichier : Fichier={
+  /*public fichier : Fichier={
     id:"aa",
     chemin:"chemin"
-  };
+  };*/
   candidatFormGroup: FormGroup = new FormGroup({
     name: new FormControl("", [Validators.required]),
     prenom: new FormControl("", [Validators.required]),
@@ -204,13 +208,13 @@ export class MonDossierComponent implements OnInit{
       this.subscription.unsubscribe();
     }
   }
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+  }
 
   enregisterCandidature() {
       this.handleSuivant();
-    this.fichier = {
-      id: "ff",
-      chemin: this.diplomeFormGroup.value.fichier
-    };
+
     this.diplomeCandidat = {
       id: 1, // Assigner la valeur appropriée
       typeDiplome: this.diplomeFormGroup.get('typeDiplome')?.value,
@@ -218,23 +222,26 @@ export class MonDossierComponent implements OnInit{
       anneeObtention: this.diplomeFormGroup.value.anneeObtention,
       etablissement: this.diplomeFormGroup.value.etablissement,
       candidatDto: this.candidat,
-      fichierDto: this.fichier,
+      fichierDto: this.selectedFile,
       filiereDto: this.filier
     };
-    this.fichierService.addFichier(this.fichier).subscribe(
-      (newFichier) => {
-        console.log('Fichier enregistré:', newFichier);
-        this.fichier = { ...newFichier };
-        this.diplomeCandidat.fichierDto=this.fichier;
-        this.diplomeCandidat.candidatDto=this.candidat;
-      this.diplomeCandidat.filiereDto=this.filier;
-        this.enregistrerDiplome();
-      },
-      (error : any) => {
-        console.error('Erreur lors de l\'enregistrement du fichier:', error);
-      }
-    );
-    console.log(this.fichier);
+    if (this.selectedFile) {
+      this.fichierService.upload(this.selectedFile)
+        .then(uploadFile => {
+          this.successMessage = 'Fichier téléchargé avec succès';
+          console.log(this.successMessage + " : " +uploadFile);
+          // Traitez le message de succès ici, par exemple, mettez à jour l'affichage avec l'emplacement du fichier téléchargé
+        })
+        .catch(error => {
+          console.error('Une erreur s\'est produite lors du téléchargement du fichier:', error);
+          if (error === 'La taille du fichier dépasse 4 Mo') {
+            this.errorMessage = 'La taille du fichier dépasse 4 Mo. Veuillez uploader un nouveau fichier!';
+          } else {
+            this.errorMessage = 'Une erreur s\'est produite lors du téléchargement du fichier';
+          }
+          // Gérez les erreurs ici, par exemple, affichez un message d'erreur à l'utilisateur
+        });
+    }
   }
 
   private enregistrerDiplome() {

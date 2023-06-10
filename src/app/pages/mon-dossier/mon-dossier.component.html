@@ -191,7 +191,33 @@
                               <label class="col-sm-4 col-form-label">Établissement <span
                                 class="text-danger">*</span></label>
                               <div class="col-sm-8">
-                                <input type="text" formControlName="etablissement" class="form-control" />
+                                <input type="text" formControlName="anneeObtention" class="form-control" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label htmlFor="universite" class="col-sm-4 col-form-label">Université <span
+                                class="text-danger">*</span></label>
+                              <div class="col-sm-8">
+                                <select formControlName="universite" class="form-control form-control-sm" required
+                                        id="universite">
+                                  <option value="">---Sélectionner---</option>
+                                  <option value="Ibn_Zohr">Université Ibn Zohr</option>
+                                  <option value="Ibn_Tofail">Université Ibn-Tofail</option>
+                                  <option value="Hassan_II">Université Hassan II</option>
+                                  <option value="Hassa_I">Université Hassan- 1er</option>
+                                  <option value="Chouaib_Doukkali">Université Chouaib Doukkali</option>
+                                  <option value="Cadi_Ayyad">Université Cadi Ayyad</option>
+                                  <option value="Moulay_Slimane">Université Sultan Moulay Slimane</option>
+                                  <option value="Moulay_Ismaïl">Université Moulay-Ismaïl</option>
+                                  <option value="Mohamed_Ben_Abdellah">Université Sidi Mohamed Ben Abdellah</option>
+                                  <option value="Mohammed_V">Université Mohammed-V</option>
+                                  <option value="Abdelmalek_Essaâdi">Université Abdelmalek Essaâdi</option>
+                                  <option value="Autre">Autre</option>
+                                </select>
                               </div>
                             </div>
                           </div>
@@ -201,7 +227,12 @@
                             <div class="form-group row">
                               <label class="col-sm-4 col-form-label">Fichier <span class="text-danger">*</span></label>
                               <div class="col-sm-8">
-                                <input type="file" formControlName="fichier" class="form-control" />
+                                <input type="file" formControlName="fichier" class="form-control"
+                                       [class.error-border]="errorMessage && !successMessage"
+                                       value="fichier" (change)="onFileSelected($event)" accept=".pdf" />
+
+                                <!--<div *ngIf="successMessage" class="success-text">{{ successMessage }}</div>-->
+                                <div *ngIf="errorMessage && !successMessage" class="error-text">{{ errorMessage}}</div>
                               </div>
                             </div>
                           </div>

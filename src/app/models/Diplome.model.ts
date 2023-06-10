@@ -10,7 +10,7 @@ export interface Diplome {
   etablissement: string;
   candidatDto: Candidat;
   // filieresDto: FiliereDto[];
-  fichierDto: Fichier;
+  fichierDto: File | null;
   filiereDto : Filiere;
   // notesSemesterDto: NotesSemesterDto[];
 }
