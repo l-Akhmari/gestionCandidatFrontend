@@ -13,14 +13,15 @@ const routes: Routes = [
     path: "admin", children: [
       { path: "Dashboard", component: DashboardComponent },
       { path: "AddDirectionPedagogique", component: AddDirectionPedagogiqueComponent },
-     {path: "AddChefDepartement", component: AddChefDepartementComponent},
+      {path: "AddChefDepartement", component: AddChefDepartementComponent},
       { path: "acceuil", component: AccueilComponent },
     ]
   },
   {
     path: "candidat", children: [
-      { path: "MonDossier", component: MonDossierComponent }
-
+      { path: "Acceuil", component: AccueilComponent },
+      { path: "MonDossier", component: MonDossierComponent },
+      // { path: "MesCandidatures", component: MesCandidaturesComponent  }
     ]
   }
 ];
