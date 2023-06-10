@@ -11,6 +11,10 @@ export interface Candidat{
   cne: string;
   ville: string;
   admis: boolean;
+    pays : string;
+    bac : string;
+   paysObtentionBac : string;
+    bacAnneObtention : Date;
   // filieresDto: FiliereDto[];
   // diplomesDto: DiplomeDto[];
 }
