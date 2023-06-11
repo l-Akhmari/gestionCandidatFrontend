@@ -1,5 +1,10 @@
-import { Component, ElementRef, Renderer2, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validator, Validators } from "@angular/forms";
+import {Component, ElementRef, Renderer2, OnInit, NgModule} from '@angular/core';
+import {
+  FormControl,
+  FormGroup,
+
+  Validators
+} from "@angular/forms";
 import { Router } from "@angular/router";
 import { MessageService } from "primeng/api";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
@@ -16,8 +21,8 @@ import {Filiere} from "../../models/Filiere.model";
 import { Subscription } from 'rxjs';
 
 
-//import {diplome} from "../../models/diplome.model"
 
+//import {diplome} from "../../models/diplome.model"
 
 
 @Component({
@@ -26,7 +31,9 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./mon-dossier.component.css'],
 })
 export class MonDossierComponent implements OnInit{
+  siteKey:string;
   constructor(
+
     private router: Router,
     private messageService: MessageService,
     private http: HttpClient,
@@ -37,7 +44,7 @@ export class MonDossierComponent implements OnInit{
     private fichierService : FichierService,
     private route: ActivatedRoute,
     private filierService : FiliereService
-  ) { }
+  ) { this.siteKey="6LdPx4omAAAAALHH7coH56SpsM0S2Mdd319S4v8F" }
 
   step1: boolean = true;
   step2: boolean = false;
@@ -189,6 +196,7 @@ export class MonDossierComponent implements OnInit{
   }*/
 
   private subscription! : Subscription;
+
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {

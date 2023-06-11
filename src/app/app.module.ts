@@ -25,7 +25,8 @@ import { SidebarComponent } from './layouts/sidebar/sidebar.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
 import { DialogModule } from 'primeng/dialog';
-;
+import {CommonModule} from "@angular/common";
+import {NgxCaptchaModule} from "ngx-captcha";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AccordionModule} from "primeng/accordion";
 import { AddChefDepartementComponent } from './add-chef-departement/add-chef-departement.component';
@@ -36,9 +37,9 @@ import { AddChefDepartementComponent } from './add-chef-departement/add-chef-dep
     CondidatTemplateComponent,
     AccueilComponent,
     DashboardComponent,
-    MonDossierComponent,
     SidebarComponent,
     FooterComponent,
+     MonDossierComponent ,
     NavbarComponent,
     AddDirectionPedagogiqueComponent,
     AddChefDepartementComponent,
@@ -49,6 +50,10 @@ import { AddChefDepartementComponent } from './add-chef-departement/add-chef-dep
         BrowserModule,
         AppRoutingModule,
         ReactiveFormsModule,
+
+      CommonModule,
+      ReactiveFormsModule,
+      NgxCaptchaModule,FormsModule,BrowserModule,
         RadioButtonModule,
         InputTextModule,
         FormsModule,

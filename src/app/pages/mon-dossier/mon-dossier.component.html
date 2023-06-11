@@ -506,9 +506,12 @@
 
                     </div>
 
+
                   </form>
 
-
+                  <ngx-recaptcha2 #captchaElem
+                                  [siteKey]="siteKey"
+                  ></ngx-recaptcha2>
                   <br> <br><br>
                   <form class="form-sample" *ngIf="step2" style="margin-bottom: 20px;">
                     <div class="d-flex justify-content-between">
@@ -603,14 +606,19 @@
                                 <div *ngIf="errorMessage && !successMessage" class="error-text">{{ errorMessage}}</div>
                               </div>
                             </div>
+
                           </div>
+
 
                         </div>
                       </form>
                     </div>
-                    <br>
 
+                    <br>
                   </form>
+                  <ngx-recaptcha2 #captchaElem
+                                  [siteKey]="siteKey"
+                  ></ngx-recaptcha2>
                   <div class="d-flex justify-content-end">
                     <button *ngIf="step1" class="btn btn-gradient-info me-2" (click)="Suivant()">Suivant</button>
                     <button *ngIf="step2" class="btn btn-gradient-secondary me-2" (click)="Back()">Précédent</button>
