@@ -129,11 +129,15 @@ public diplome1 : Diplome={
     telephone: new FormControl("", [Validators.required]),
     adresse: new FormControl("", [Validators.required]),
     ville: new FormControl("", [Validators.required]),
+    ville2: new FormControl(""),
     dateNaissance: new FormControl("", [Validators.required]),
     bac: new FormControl("", [Validators.required]),
+    bac2: new FormControl(""),
     bacAnne: new FormControl("", [Validators.required]),
     pays: new FormControl("", [Validators.required]),
+    pays2: new FormControl(""),
     paysObtentionBac: new FormControl("", [Validators.required]),
+    paysObtentionBac2: new FormControl("")
    // diplome: new FormArray([this.getDiplomeFields()])
   });
   /*public getCandidats(): void {
@@ -161,11 +165,24 @@ public diplome1 : Diplome={
     this.candidat.addresse = this.candidatFormGroup.get('adresse')?.value;
     this.candidat.dateNaissance = this.candidatFormGroup.get('dateNaissance')?.value;
     this.candidat.bac = this.candidatFormGroup.get('bac')?.value;
+    if(this.candidatFormGroup.get('bac')?.value=="Autre"){
+      this.candidat.bac = this.candidatFormGroup.get('bac2')?.value;
+    }
     this.candidat.bacAnneObtention = this.candidatFormGroup.get('bacAnne')?.value;
+    if(this.candidatFormGroup.get('pays')?.value=="Autre"){
+      this.candidat.pays = this.candidatFormGroup.get('pays2')?.value;
+    }
     this.candidat.pays = this.candidatFormGroup.get('pays')?.value;
     this.candidat.paysObtentionBac = this.candidatFormGroup.get('paysObtentionBac')?.value;
+    if(this.candidatFormGroup.get('paysObtentionBac')?.value=="Autre"){
+      this.candidat.paysObtentionBac = this.candidatFormGroup.get('paysObtentionBac2')?.value;
+    }
+
     this.candidat.mdp = '111';
     this.candidat.ville = this.candidatFormGroup.get('ville')?.value;
+    if(this.candidatFormGroup.get('ville')?.value=="Autre"){
+      this.candidat.ville = this.candidatFormGroup.get('ville2')?.value;
+    }
     this.candidat.admis = false;
     console.log('hey log:', this.candidat);
 
