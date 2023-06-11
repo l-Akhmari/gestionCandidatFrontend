@@ -25,6 +25,10 @@ export class FichierService {
 
     return this.http.request(req);
   }*/
+  getFichierById(id: string): Observable<Fichier> {
+    const url = `${this.apiUrl}/find/${id}`;
+    return this.http.get<Fichier>(url);
+  }
   upload(file: File): Promise<any> {
     const formData: FormData = new FormData();
     formData.append('fichier', file);
@@ -37,7 +41,7 @@ export class FichierService {
       return Promise.reject('La taille du fichier dépasse 4 Mo');
     }
 
-    return this.http.post(`${this.apiUrl}/addFile`, formData, { headers: headers, responseType: 'text' })
+    return this.http.post(`${this.apiUrl}/addFile`, formData, { headers: headers})
       .toPromise()
       .then(response => {
         console.log('Fichier téléchargé avec succès:', response);

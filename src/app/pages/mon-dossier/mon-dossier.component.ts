@@ -50,18 +50,37 @@ export class MonDossierComponent implements OnInit{
 
 //candida: candidat = new candidat();
 
+  public candidat: Candidat={
+    id: '',
+    cin: '',
+    nom: '',
+    prenom: '',
+    addresse: '',
+    email: '',
+    dateNaissance: new Date(),
+    telephone: '',
+    mdp: '',
+    cne: '',
+    ville: '',
+    admis: false,
+    pays: '',
+    bac: '',
+    paysObtentionBac: '',
+    bacAnneObtention: new Date()
+  };
   public candidats: Candidat[] = [];
-  public candidat!: Candidat;
   public diplome : Diplome[] = [];
   public diplomeCandidat! : Diplome;
   public candidatTest!:Candidat;
   public filier! : Filiere;
-  /*public fichier : Fichier={
+ // public id!:string;
+
+  public fichier : Fichier={
     id:"aa",
     chemin:"chemin"
-  };*/
+  };
   candidatFormGroup: FormGroup = new FormGroup({
-    name: new FormControl("", [Validators.required]),
+    nom: new FormControl("", [Validators.required]),
     prenom: new FormControl("", [Validators.required]),
     cin: new FormControl("", [Validators.required]),
     cne: new FormControl("", [Validators.required]),
@@ -92,7 +111,7 @@ export class MonDossierComponent implements OnInit{
 
 
   handleSuivant(){
-    this.candidat.nom = this.candidatFormGroup.get('name')?.value;
+    this.candidat.nom = this.candidatFormGroup.get('nom')?.value;
     this.candidat.prenom = this.candidatFormGroup.get('prenom')?.value;
     this.candidat.cin = this.candidatFormGroup.get('cin')?.value;
     this.candidat.cne = this.candidatFormGroup.get('cne')?.value;
@@ -114,7 +133,9 @@ export class MonDossierComponent implements OnInit{
         (newCandidat) => {
           console.log('Candidat enregistré:', newCandidat);
           this.candidat = { ...newCandidat };
+          this.diplomeCandidat.candidatDto = { ...newCandidat };
           // Traiter la réponse après l'enregistrement réussi (par exemple, afficher un message de succès)
+          console.log("candiat hahowa " , newCandidat);
         },
         (error) => {
           console.error('Erreur lors de l\'enregistrement du candidat:', error);
@@ -131,6 +152,7 @@ export class MonDossierComponent implements OnInit{
     anneeObtention: new FormControl("", [Validators.required]),
     etablissement: new FormControl("", [Validators.required]),
     fichier: new FormControl("", [Validators.required]),
+    universite: new FormControl("", [Validators.required]),
 
   })
 
@@ -145,7 +167,7 @@ export class MonDossierComponent implements OnInit{
     const st2 = this.elementRef.nativeElement.querySelector('#st2');
     this.renderer.removeClass(st2, 'btn-secondary');
     this.renderer.addClass(st2, 'btn-info');
-
+    console.log('hey log:', this.candidat);
   }
   Back() {
     this.step1 = true;
@@ -210,23 +232,16 @@ export class MonDossierComponent implements OnInit{
   }
 
   enregisterCandidature() {
+
       this.handleSuivant();
 
-    this.diplomeCandidat = {
-      id: 1, // Assigner la valeur appropriée
-      typeDiplome: this.diplomeFormGroup.get('typeDiplome')?.value,
-      specialiteDiplome: this.diplomeFormGroup.get("specialite")?.value,
-      anneeObtention: this.diplomeFormGroup.value.anneeObtention,
-      etablissement: this.diplomeFormGroup.value.etablissement,
-      candidatDto: this.candidat,
-      fichierDto: this.selectedFile,
-      filiereDto: this.filier
-    };
     if (this.selectedFile) {
       this.fichierService.upload(this.selectedFile)
         .then(uploadFile => {
-          this.successMessage = 'Fichier téléchargé avec succès';
-          console.log(this.successMessage + " : " +uploadFile);
+          this.successMessage = 'hani Fichier téléchargé avec succès';
+          console.log(this.successMessage + " : " ,uploadFile);
+          this.fichier= {...uploadFile};
+          this.diplomeCandidat.fichierDto={...uploadFile};
           // Traitez le message de succès ici, par exemple, mettez à jour l'affichage avec l'emplacement du fichier téléchargé
         })
         .catch(error => {
@@ -240,6 +255,19 @@ export class MonDossierComponent implements OnInit{
         });
     }
 
+    this.diplomeCandidat = {
+      id: 1, // Assigner la valeur appropriée
+      typeDiplome: this.diplomeFormGroup.get('typeDiplome')?.value,
+      specialiteDiplome: this.diplomeFormGroup.get("specialite")?.value,
+      universite: this.diplomeFormGroup.get("universite")?.value,
+      anneeObtention: this.diplomeFormGroup.get("anneeObtention")?.value,
+      etablissement: this.diplomeFormGroup.get("etablissement")?.value,
+      candidatDto: this.candidat,
+      fichierDto: this.fichier,
+      filiereDto: this.filier
+    };
+    console.log(this.diplomeCandidat);
+    this.enregistrerDiplome();
   }
 
   private enregistrerDiplome() {
@@ -249,7 +277,7 @@ export class MonDossierComponent implements OnInit{
 
     this.diplomeService.addDiplome(this.diplomeCandidat).subscribe(
       (diplome: Diplome) => {
-        console.log('Enregistrement réussi !');
+        console.log('Enregistrement réussi !',diplome);
       },
       (error) => {
         console.error('Erreur lors de l\'enregistrement du diplome:', error);
