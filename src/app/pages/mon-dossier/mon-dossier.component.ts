@@ -230,6 +230,7 @@ export class MonDossierComponent implements OnInit{
       fichierDto: this.selectedFile,
       filiereDto: this.filier
     };
+
     if (this.selectedFile) {
       this.fichierService.upload(this.selectedFile)
         .then(uploadFile => {
