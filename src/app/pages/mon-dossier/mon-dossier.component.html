@@ -418,6 +418,7 @@
                             <option value="Zinat">Zinat</option>
                             <option value="Zinat">Zinat</option>
                             <option value="Zoug">Zoug</option>
+                            <option value="Autre">Autre</option>
 
                           </select>
 
@@ -507,11 +508,57 @@
                     </div>
 
 
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <p>Si vous avez choisi autre ville, veuillez la saisir : </p>
+                          <label htmlFor="ville2" class="col-sm-3 col-form-label">Ville </label>
+                          <div class="col-sm-9">
+                            <input type="text" required class="form-control" pInputText id="ville2"
+                                   aria-describedby="username-help" placeholder="Email" formControlName="ville2" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <p>Si vous avez choisi autre baccalauréat, veuillez la saisir : </p>
+
+                          <label htmlFor="bac2" class="col-sm-3 col-form-label">Baccalauréat</label>
+                          <div class="col-sm-9">
+                            <input type="text" required class="form-control" pInputText id="bac2"
+                                   aria-describedby="username-help" placeholder="Baccalauréat" formControlName="bac2" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <p>Si vous avez choisi autre pays, veuillez la saisir : </p>
+                          <label htmlFor="pays2" class="col-sm-3 col-form-label">Pays</label>
+                          <div class="col-sm-9">
+                            <input type="text" required class="form-control" pInputText id="pays2"
+                                   aria-describedby="username-help" placeholder="Pays" formControlName="pays2" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <p>Si vous avez choisi autre pays d'obtention, veuillez la saisir : </p>
+
+                          <label htmlFor="paysObten" class="col-sm-3 col-form-label">Pays d'obtention</label>
+                          <div class="col-sm-9">
+                            <input type="text" required class="form-control" pInputText id="paysObten"
+                                   aria-describedby="username-help" placeholder="Pays d'obtention" formControlName="paysObtentionBac2" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
                   </form>
 
-                  <ngx-recaptcha2 #captchaElem
-                                  [siteKey]="siteKey"
-                  ></ngx-recaptcha2>
                   <br> <br><br>
                   <form class="form-sample" *ngIf="step2" style="margin-bottom: 20px;">
                     <div class="d-flex justify-content-between">
@@ -594,6 +641,9 @@
                           </div>
                         </div>
                         <div class="row">
+                          <p *ngIf="filier?.typeDiplomeAObtenir === 'Master'">Paragraphe 1</p>
+                          <p *ngIf="filier?.typeDiplomeAObtenir === 'Ingenieur_Etat'">Paragraphe 2</p>
+                          <p *ngIf="filier?.typeDiplomeAObtenir === 'License'">Paragraphe 3</p>
                           <div class="col-md-6">
                             <div class="form-group row">
                               <label class="col-sm-4 col-form-label">Fichier <span class="text-danger">*</span></label>
@@ -611,14 +661,15 @@
 
 
                         </div>
+
                       </form>
                     </div>
-
+                    <ngx-recaptcha2 #captchaElem
+                                    [siteKey]="siteKey"
+                    ></ngx-recaptcha2>
                     <br>
                   </form>
-                  <ngx-recaptcha2 #captchaElem
-                                  [siteKey]="siteKey"
-                  ></ngx-recaptcha2>
+
                   <div class="d-flex justify-content-end">
                     <button *ngIf="step1" class="btn btn-gradient-info me-2" (click)="Suivant()">Suivant</button>
                     <button *ngIf="step2" class="btn btn-gradient-secondary me-2" (click)="Back()">Précédent</button>

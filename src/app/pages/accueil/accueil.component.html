@@ -36,6 +36,18 @@
         Loading Formation Continue...
       </div>
       <ng-template #formationContinueContent>
+        <!-- HTML -->
+        <p style="border: 2px solid #e11414; padding: 8px;">
+          <strong style="color: red; text-align: center;">Important</strong><br><br>
+          <span style="color: #141439;">
+    Ces filières sont diplômantes et délivrent des diplômes Universitaires (Université Hassan II de Casablanca)<br><br>
+    Les formations sont payantes. Pour plus d'informations, contactez le responsable de la filière qui vous intéresse.<br><br>
+    Pour accéder à l'une de ces filières, il faut satisfaire les conditions requises, déposer votre candidature en ligne et fournir un dossier électronique.
+    L'étude de votre dossier et l'entretien (éventuellement test écrit ou pratique) sont payants.<br><br>
+    Les formations se déroulent les soirées et/ou Weekends, selon les filières.<br><br>
+    Pour les entreprises qui souhaitent former leurs collaborateurs dans des domaines spécifiques en relation avec les domaines de compétences du corps professoral de l'ENSET (Electronique, Mécanique, Automatisation, Informatique, Intelligence artificielle, Economie, Gestion, Finance, Etc.), n'hésitez pas à nous contacter, nous serons à votre écoute pour répondre au mieux à vos exigences.
+  </span>
+        </p>
         <div *ngIf="filieresFormationContinue.length > 0; else noFormationContinueContent">
 <!--
           <h2>Liste des filières Formation Continue :</h2>
