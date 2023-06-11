@@ -641,9 +641,32 @@
                           </div>
                         </div>
                         <div class="row">
-                          <p *ngIf="filier?.typeDiplomeAObtenir === 'Master'">Paragraphe 1</p>
-                          <p *ngIf="filier?.typeDiplomeAObtenir === 'Ingenieur_Etat'">Paragraphe 2</p>
-                          <p *ngIf="filier?.typeDiplomeAObtenir === 'License'">Paragraphe 3</p>
+                          <p>Le fichier doit contenir les pièces suivantes :</p>
+
+                          <ul *ngIf="filier?.typeDiplomeAObtenir === 'Master'">
+                            <li style="color: #da1a1a;">Une photo d'identité</li>
+                            <li style="color: #da1a1a;">Carte nationale (recto et verso sur une seule page)</li>
+                            <li style="color: #da1a1a;">Bac (recto et verso)</li>
+                            <li style="color: #da1a1a;">Relevé des notes : semestre 1, semestre 2, semestre 3, semestre 4,semestre 5 et semestre 6</li>
+                            <li style="color: #da1a1a;">Si vous avez un diplôme BTS, veuillez fournir les relevés de notes des 2 années</li>
+                            <li style="color: #da1a1a;">Les attestations de réussite</li>
+                            <li style="color: #da1a1a;">CV</li>
+                          </ul>
+                          <ul *ngIf="filier?.typeDiplomeAObtenir === 'Ingenieur_Etat'">
+                            <li style="color: #da1a1a;">Une photo d'identité</li>
+                            <li style="color: #da1a1a;">Carte nationale (recto et verso sur une seule page)</li>
+                            <li style="color: #da1a1a;">Bac (recto et verso)</li>
+                            <li style="color: #da1a1a;">Relevé des notes : semestre 1, semestre 2, semestre 3 et semestre 4</li>
+                            <li style="color: #da1a1a;">Si vous avez un diplôme BTS, veuillez fournir les relevés de notes des 2 années</li>
+                            <li style="color: #da1a1a;">Attestation de réussite (si disponible)</li>
+                            <li style="color: #da1a1a;">CV</li></ul>
+                          <ul *ngIf="filier?.typeDiplomeAObtenir === 'License'">
+                            <li style="color: #da1a1a;">Une photo d'identité</li>
+                            <li style="color: #da1a1a;">Carte nationale (recto et verso sur une seule page)</li>
+                            <li style="color: #da1a1a;">Bac (recto et verso)</li>
+                            <li style="color: #da1a1a;">Relevé des notes : semestre 1 et semestre 2</li>
+                            <li style="color: #da1a1a;">CV</li>
+                          </ul>
                           <div class="col-md-6">
                             <div class="form-group row">
                               <label class="col-sm-4 col-form-label">Fichier <span class="text-danger">*</span></label>
