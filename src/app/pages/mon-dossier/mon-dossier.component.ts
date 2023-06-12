@@ -118,8 +118,8 @@ public diplome1 : Diplome={
   };
   public candidats: Candidat[] = [];
   public diplome : Diplome[] = [];
-  public diplomeCandidat! : Diplome;
-  public candidatTest!:Candidat;
+ public diplomeCandidat : Diplome | any= {};
+public candidatTest!:Candidat;
   public filier! : Filiere;
  // public id!:string;
 
@@ -198,7 +198,7 @@ public diplome1 : Diplome={
         (newCandidat) => {
           console.log('Candidat enregistré:', newCandidat);
           this.candidat = { ...newCandidat };
-          this.diplomeCandidat.candidatDto = { ...newCandidat };
+          //this.diplomeCandidat.candidatDto = { ...newCandidat };
           // Traiter la réponse après l'enregistrement réussi (par exemple, afficher un message de succès)
           console.log("candiat hahowa " , newCandidat);
         },
@@ -207,7 +207,7 @@ public diplome1 : Diplome={
           // Traiter l'erreur (par exemple, afficher un message d'erreur)
         }
       );
-    return this.candidatService.saveCandidat(this.candidat);
+    //return this.candidatService.saveCandidat(this.candidat);
 
   }
 
@@ -303,21 +303,42 @@ public diplome1 : Diplome={
 
     this.handleSuivant();
 
-    // Enregistrer le fichier
-    if (this.selectedFile !== null) {
+    if (this.selectedFile) {
       this.fichierService.upload(this.selectedFile)
         .then(uploadFile => {
-          this.successMessage = 'Fichier téléchargé avec succès';
-          console.log(this.successMessage + " :", uploadFile);
-          this.fichier = { ...uploadFile };
-          this.diplomeCandidat.fichierDto={ ...uploadFile };
 
+          this.successMessage = 'hani Fichier téléchargé avec succès';
+          console.log(this.successMessage + " : " ,uploadFile);
+          this.fichier= {...uploadFile};
+          console.log(this.diplomeCandidat)
+          console.log(this.fichier)
+          this.diplomeCandidat.fichierDto= this.fichier
+          console.log('file data', this.diplomeCandidat.fichierDto)
+          console.log(this.candidat)
+
+          this.diplomeCandidat.candidatDto= this.candidat;
+
+          this.diplomeCandidat.typeDiplome =this.diplomeFormGroup.get('typeDiplome')?.value
+          this.diplomeCandidat.specialiteDiplome= this.diplomeFormGroup.get("specialite")?.value
+          this.diplomeCandidat.universite= this.diplomeFormGroup.get("universite")?.value
+          this.diplomeCandidat.anneeObtention= this.diplomeFormGroup.get("anneeObtention")?.value
+          this.diplomeCandidat.etablissement=this.diplomeFormGroup.get("etablissement")?.value
+          this.diplomeCandidat.filiereDto = this.filier
+
+
+          console.log('file diplomeCandidat', this.diplomeCandidat);
+          this.enregistrerDiplome(this.diplomeCandidat);
+          // Traitez le message de succès ici, par exemple, mettez à jour l'affichage avec l'emplacement du fichier téléchargé
         })
         .catch(error => {
           console.error('Une erreur s\'est produite lors du téléchargement du fichier:', error);
+          if (error === 'La taille du fichier dépasse 4 Mo') {
+            this.errorMessage = 'La taille du fichier dépasse 4 Mo. Veuillez uploader un nouveau fichier!';
+          } else {
+            this.errorMessage = 'Une erreur s\'est produite lors du téléchargement du fichier';
+          }
+          // Gérez les erreurs ici, par exemple, affichez un message d'erreur à l'utilisateur
         });
-    } else {
-      console.warn('Aucun fichier sélectionné.');
     }
     // Enregistrer le diplôme du candidat
     this.diplomeCandidat = {
@@ -349,22 +370,27 @@ public diplome1 : Diplome={
           // Gérez les erreurs ici, par exemple, affichez un message d'erreur à l'utilisateur
         });
     }
+
   }
 
 
 
 
-  private enregistrerDiplome() {
+  private enregistrerDiplome(data: Diplome ) {
 
 
-    console.log("diplomeCandidat:", this.diplomeCandidat);
+    /// console.log("file diplomeCandidat:", this.diplomeCandidat);
 
-    this.diplomeService.addDiplome(this.diplomeCandidat).subscribe(
-      (diplome: Diplome) => {
-        console.log('Enregistrement réussi !',diplome);
+    this.diplomeService.addDiplome(data).subscribe(
+      (diplome) => {
+        console.log('file save dipole ', diplome)
+
+        console.log('file Enregistrement réussi !',diplome);
+        this.router.navigateByUrl('/admin/acceuil')
       },
       (error) => {
-        console.error('Erreur lors de l\'enregistrement du diplome:', error);
+
+        console.error('file Erreur lors de l\'enregistrement du diplome:', error);
       }
     );
   }
