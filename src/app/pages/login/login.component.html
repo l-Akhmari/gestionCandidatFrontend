@@ -1,0 +1,29 @@
+<p-card>
+  <div class="col-md-4 offset-3">
+    <p-card class="card">
+      <h3 class="offset-lg-5">Login</h3>
+      <hr />
+      <div class="card-body col-10 offset-1">
+        <div class="text-danger">{{errormessage}}</div>
+        <form [formGroup]="loginFormGroup" (ngSubmit)="handleLogin()" style="align-content: start ">
+          <div class="mb-4">
+              <span class="p-float-label">
+                <input type="text" pInputText class="form-control" formControlName="email" />
+                <label class="form-label">Email</label>
+              </span>
+          </div>
+          <div class="mb-4">
+              <span class="p-float-label">
+                <input  type="password" pInputText class="form-control" formControlName="password"/>
+                <label class="form-label">password</label>
+              </span>
+          </div>
+          <p-button class="mb-lg-5 offset-4" label="login" type="submit" icon="pi pi-check" iconPos="right" ></p-button>
+          <div class="">
+            <a class="btn btn-link" routerLink="/register">Register</a>
+          </div>
+        </form>
+      </div>
+    </p-card>
+  </div>
+</p-card>

@@ -32,7 +32,7 @@ export class AccueilComponent implements OnInit{
         this.filieresFormationInitiale = filieres;
         this.loadingFormationInitiale = false;
         console.log(filieres);
-        console.log("bonjour")
+        //console.log("bonjour")
       });
   }
 

@@ -33,4 +33,7 @@ export class DiplomeService {
   deleteDiplome(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/delete/${id}`, { responseType: 'text' });
   }
+  getAllCandidatures(cin: string): Observable<Diplome[]> {
+    return this.http.get<Diplome[]>(`${this.baseUrl}/allCandidatures/${cin}`);
+  }
 }

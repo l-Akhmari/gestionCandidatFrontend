@@ -23,15 +23,15 @@
                     </div>
                     <div class="nav-profile-text">
                         <p class="mb-1 text-black">
-                    AFA FATIMA
+                          {{currentUser.user.firstname}} {{currentUser.user.lastname}}
                         </p>
                     </div>
                 </a>
                 <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
                     <a class="dropdown-item" href="/profile">
                         <i class="mdi mdi-account-key me-2 text-success"></i> Profile </a>
-                    <a class="dropdown-item" href="/logout">
-                        <i class="mdi mdi-logout me-2 text-primary"></i> Déconnecter </a>
+                    <a class="dropdown-item" >
+                        <i class="mdi mdi-logout me-2 text-primary" (click)="handleLogout()"></i> Déconnecter </a>
 
                 </div>
             </li>

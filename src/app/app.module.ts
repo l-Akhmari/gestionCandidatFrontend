@@ -30,6 +30,12 @@ import {NgxCaptchaModule} from "ngx-captcha";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AccordionModule} from "primeng/accordion";
 import { AddChefDepartementComponent } from './add-chef-departement/add-chef-departement.component';
+import { MesCandidaturesComponent } from './pages/mes-candidatures/mes-candidatures.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import {CardModule} from "primeng/card";
+import {UniqueEmailValidator} from "./validators/unique-email-validator";
+import {JwtModule, JWT_OPTIONS, JwtHelperService } from "@auth0/angular-jwt";
 
 @NgModule({
   declarations: [
@@ -43,6 +49,9 @@ import { AddChefDepartementComponent } from './add-chef-departement/add-chef-dep
     NavbarComponent,
     AddDirectionPedagogiqueComponent,
     AddChefDepartementComponent,
+    MesCandidaturesComponent,
+    LoginComponent,
+    RegisterComponent,
 
 
   ],
@@ -51,9 +60,9 @@ import { AddChefDepartementComponent } from './add-chef-departement/add-chef-dep
         AppRoutingModule,
         ReactiveFormsModule,
 
-      CommonModule,
-      ReactiveFormsModule,
-      NgxCaptchaModule,FormsModule,BrowserModule,
+        CommonModule,
+        ReactiveFormsModule,
+        NgxCaptchaModule, FormsModule, BrowserModule,
         RadioButtonModule,
         InputTextModule,
         FormsModule,
@@ -65,9 +74,10 @@ import { AddChefDepartementComponent } from './add-chef-departement/add-chef-dep
         TabViewModule,
         DialogModule,
         BrowserAnimationsModule,
-        AccordionModule
+        AccordionModule, CardModule
     ],
-  providers: [MessageService],
+  providers: [MessageService,JwtHelperService,
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

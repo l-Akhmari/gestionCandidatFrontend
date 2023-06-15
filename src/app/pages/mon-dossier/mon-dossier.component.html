@@ -687,16 +687,134 @@
 
                       </form>
                     </div>
+
+                    <br>
+                   <form class="form-sample" [formGroup]="NotesFormGroup" *ngIf="typeDiplomeAObtenir === 'Ingenieur_Etat'">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Note Semestre 1 <span
+                              class="text-danger">*</span></label>
+                            <div class="col-sm-8">
+                              <input type="number" formControlName="note1" class="form-control" />
+                              <p>Utilisez le point comme séparateur décimal. Ex. 17.992</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Note Semestre 2 <span
+                              class="text-danger">*</span></label>
+                            <div class="col-sm-8">
+                              <input type="number" formControlName="note2" class="form-control" />
+                              <p>Utilisez le point comme séparateur décimal. Ex. 17.992</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Note Semestre 3 <span
+                              class="text-danger">*</span></label>
+                            <div class="col-sm-8">
+                              <input type="number" formControlName="note3" class="form-control" />
+                              <p>Utilisez le point comme séparateur décimal. Ex. 17.992</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Note Semestre 4 <span
+                              class="text-danger">*</span></label>
+                            <div class="col-sm-8">
+                              <input type="number" formControlName="note4" class="form-control" />
+                              <p>Utilisez le point comme séparateur décimal. Ex. 17.992</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+
+                    <form class="form-sample" [formGroup]="NotesFormGroup" *ngIf="typeDiplomeAObtenir === 'Master'">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Note Semestre 1 <span
+                              class="text-danger">*</span></label>
+                            <div class="col-sm-8">
+                              <input type="number" formControlName="note1" class="form-control" />
+                              <p>Utilisez le point comme séparateur décimal. Ex. 17.992</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Note Semestre 2 <span
+                              class="text-danger">*</span></label>
+                            <div class="col-sm-8">
+                              <input type="number" formControlName="note2" class="form-control" />
+                              <p>Utilisez le point comme séparateur décimal. Ex. 17.992</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Note Semestre 3 <span
+                              class="text-danger">*</span></label>
+                            <div class="col-sm-8">
+                              <input type="number" formControlName="note3" class="form-control" />
+                              <p>Utilisez le point comme séparateur décimal. Ex. 17.992</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Note Semestre 4 <span
+                              class="text-danger">*</span></label>
+                            <div class="col-sm-8">
+                              <input type="number" formControlName="note4" class="form-control" />
+                              <p>Utilisez le point comme séparateur décimal. Ex. 17.992</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Note Semestre 5 <span
+                              class="text-danger">*</span></label>
+                            <div class="col-sm-8">
+                              <input type="number" formControlName="note5" class="form-control" />
+                              <p>Utilisez le point comme séparateur décimal. Ex. 17.992</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Note Semestre 6 <span
+                              class="text-danger">*</span></label>
+                            <div class="col-sm-8">
+                              <input type="number" formControlName="note6" class="form-control" />
+                              <p>Utilisez le point comme séparateur décimal. Ex. 17.992</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
                     <ngx-recaptcha2 #captchaElem
                                     [siteKey]="siteKey"
                     ></ngx-recaptcha2>
-                    <br>
                   </form>
 
                   <div class="d-flex justify-content-end">
                     <button *ngIf="step1" class="btn btn-gradient-info me-2" (click)="Suivant()">Suivant</button>
                     <button *ngIf="step2" class="btn btn-gradient-secondary me-2" (click)="Back()">Précédent</button>
-                    <button *ngIf="step2" class="btn btn-gradient-info me-2" (click)="enregisterCandidature()">Soumettre votre candidature</button>
+                    <button *ngIf="step2" class="btn btn-gradient-info me-2" (click)="handleSuivant()">Soumettre votre candidature</button>
+                    <button *ngIf="step2" class="btn btn-gradient-info me-2" (click)="handleSuivant()">Soumettre votre candidature</button>
+
                   </div>
 
                 </div>

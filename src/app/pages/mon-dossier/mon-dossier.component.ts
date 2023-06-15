@@ -20,6 +20,9 @@ import {FiliereService} from "../../services/filiere.service";
 import {Filiere} from "../../models/Filiere.model";
 import { Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import {NoteSemester} from "../../models/notesSemester.model";
+import {NotesSemesterService} from "../../services/notes-semester.service";
+import {PassParamService} from "../../services/pass-param.service";
 
 
 
@@ -45,7 +48,9 @@ export class MonDossierComponent implements OnInit{
     private candidatService : CandidatService,
     private fichierService : FichierService,
     private route: ActivatedRoute,
-    private filierService : FiliereService
+    private filierService : FiliereService,
+    private notesService : NotesSemesterService,
+    private passparamService  : PassParamService,
   ) { this.siteKey="6Ldm74smAAAAAHuGUUMeGicZKZ6oIpQCrhLm5Djp" }
 
   step1: boolean = true;
@@ -54,7 +59,7 @@ export class MonDossierComponent implements OnInit{
   selectedFile: File | null = null;
   successMessage: string = '';
   errorMessage: string = '';
-
+  typeDiplomeAObtenir : string="";
 //accountObservable! : Observable<diplome>
 
 //candida: candidat = new candidat();
@@ -117,8 +122,14 @@ public diplome1 : Diplome={
     bacAnneObtention: new Date()
   };
   public candidats: Candidat[] = [];
-  public diplome : Diplome[] = [];
+  public diplomesC : Diplome[] = [];
  public diplomeCandidat : Diplome | any= {};
+public note1 : NoteSemester | any;
+public note2 : NoteSemester | any;
+public note3 : NoteSemester | any ;
+public note4 : NoteSemester | any;
+public note5 : NoteSemester | any;
+public note6 : NoteSemester | any;
 public candidatTest!:Candidat;
   public filier! : Filiere;
  // public id!:string;
@@ -146,6 +157,15 @@ public candidatTest!:Candidat;
     paysObtentionBac: new FormControl("", [Validators.required]),
     paysObtentionBac2: new FormControl("")
    // diplome: new FormArray([this.getDiplomeFields()])
+  });
+
+  NotesFormGroup: FormGroup = new FormGroup({
+    note1: new FormControl('', [Validators.required, Validators.min(0), Validators.max(20)]),
+    note2: new FormControl("", [Validators.required, Validators.min(0), Validators.max(20)]),
+    note3: new FormControl("", [Validators.required, Validators.min(0), Validators.max(20)]),
+    note4: new FormControl("", [Validators.required, Validators.min(0), Validators.max(20)]),
+    note5: new FormControl("", [Validators.required, Validators.min(0), Validators.max(20)]),
+    note6: new FormControl("", [Validators.required, Validators.min(0), Validators.max(20)]),
   });
   /*public getCandidats(): void {
     this.candidatService.getAllCandidats().subscribe(
@@ -201,6 +221,8 @@ public candidatTest!:Candidat;
           //this.diplomeCandidat.candidatDto = { ...newCandidat };
           // Traiter la réponse après l'enregistrement réussi (par exemple, afficher un message de succès)
           console.log("candiat hahowa " , newCandidat);
+          this.passparamService.setCin(newCandidat.cin)
+          this.enregisterCandidature();
         },
         (error) => {
           console.error('Erreur lors de l\'enregistrement du candidat:', error);
@@ -236,6 +258,7 @@ public candidatTest!:Candidat;
     console.log(this.diplome1);
    // this.enregistrerDiplome();
   }
+
   Back() {
     this.step1 = true;
     this.step2 = false;
@@ -286,6 +309,7 @@ public candidatTest!:Candidat;
       this.subscription = this.filierService.getFiliereById(filiereId)
         .subscribe(filiere => {
           this.filier = filiere;
+          this.typeDiplomeAObtenir = filiere.typeDiplomeAObtenir;
         });
     });
   }
@@ -301,7 +325,7 @@ public candidatTest!:Candidat;
 
   enregisterCandidature() {
 
-    this.handleSuivant();
+    //this.handleSuivant();
 
     if (this.selectedFile) {
       this.fichierService.upload(this.selectedFile)
@@ -340,42 +364,106 @@ public candidatTest!:Candidat;
           // Gérez les erreurs ici, par exemple, affichez un message d'erreur à l'utilisateur
         });
     }
-    // Enregistrer le diplôme du candidat
-    this.diplomeCandidat = {
-      id: 1, // Assigner la valeur appropriée
-      typeDiplome: this.diplomeFormGroup.get('typeDiplome')?.value,
-      specialiteDiplome: this.diplomeFormGroup.get("specialite")?.value,
-      universite: this.diplomeFormGroup.get("universite")?.value,
-      anneeObtention: this.diplomeFormGroup.get("anneeObtention")?.value,
-      etablissement: this.diplomeFormGroup.get("etablissement")?.value,
-      candidatDto: this.candidat,
-      fichierDto: this.fichier, // Ajustez si nécessaire
-      filiereDto: this.filier,
-    };
-
-    if (this.selectedFile) {
-      this.fichierService.upload(this.selectedFile)
-        .then(uploadFile => {
-          this.successMessage = 'Fichier téléchargé avec succès';
-          console.log(this.successMessage + " : " +uploadFile);
-          // Traitez le message de succès ici, par exemple, mettez à jour l'affichage avec l'emplacement du fichier téléchargé
-        })
-        .catch(error => {
-          console.error('Une erreur s\'est produite lors du téléchargement du fichier:', error);
-          if (error === 'La taille du fichier dépasse 4 Mo') {
-            this.errorMessage = 'La taille du fichier dépasse 4 Mo. Veuillez uploader un nouveau fichier!';
-          } else {
-            this.errorMessage = 'Une erreur s\'est produite lors du téléchargement du fichier';
-          }
-          // Gérez les erreurs ici, par exemple, affichez un message d'erreur à l'utilisateur
-        });
-    }
 
   }
 
+  enrigetrerNotes(idDip : number,dip:Diplome){
+    idDip=1;
+    if(this.typeDiplomeAObtenir=="Ingenieur_Etat"){
+      this.note1.note = this.NotesFormGroup.get('note1')?.value;
+      this.note1.diplome=dip;
+      this.note2.note = this.NotesFormGroup.get('note2')?.value;
+      this.note2.diplome=dip;
+      this.note3.note = this.NotesFormGroup.get('note3')?.value;
+      this.note2.diplome=dip;
+      this.note4.note = this.NotesFormGroup.get('note4')?.value;
+      this.note4.diplome=dip;
+
+      this.notesService.addNotesSemester(this.note1,idDip).subscribe((notes)=>{
+        console.log("notes : ",notes);
+      },
+        (error)=>{
+        console.log("Erreur lors de l\'enregistrement du note1", error)
+        }
+        );
+      this.notesService.addNotesSemester(this.note2,idDip).subscribe((notes)=>{
+        console.log("notes : ",notes);
+      },
+        (error)=>{
+        console.log("Erreur lors de l\'enregistrement du note2", error)
+        }
+        );
+      this.notesService.addNotesSemester(this.note3,idDip).subscribe((notes)=>{
+        console.log("notes : ",notes);
+      },
+        (error)=>{
+        console.log("Erreur lors de l\'enregistrement du note3", error)
+        }
+        );
+      this.notesService.addNotesSemester(this.note4,idDip).subscribe((notes)=>{
+        console.log("notes : ",notes);
+          this.router.navigateByUrl('/admin/acceuil')
+      },
+        (error)=>{
+        console.log("Erreur lors de l\'enregistrement du note4", error)
+        }
+        );
+    }
+    if(this.typeDiplomeAObtenir=="Master"){
+      this.note1.note = this.NotesFormGroup.get('note1')?.value;
+      this.note2.note = this.NotesFormGroup.get('note2')?.value;
+      this.note3.note = this.NotesFormGroup.get('note3')?.value;
+      this.note4.note = this.NotesFormGroup.get('note4')?.value;
+      this.note5.note = this.NotesFormGroup.get('note5')?.value;
+      this.note6.note = this.NotesFormGroup.get('note6')?.value;
+      this.notesService.addNotesSemester(this.note1,idDip).subscribe((notes)=>{
+          console.log("notes : ",notes);
+        },
+        (error)=>{
+          console.log("Erreur lors de l\'enregistrement du note1", error)
+        }
+      );
+      this.notesService.addNotesSemester(this.note2,idDip).subscribe((notes)=>{
+          console.log("notes : ",notes);
+        },
+        (error)=>{
+          console.log("Erreur lors de l\'enregistrement du note2", error)
+        }
+      );
+      this.notesService.addNotesSemester(this.note3,idDip).subscribe((notes)=>{
+          console.log("notes : ",notes);
+        },
+        (error)=>{
+          console.log("Erreur lors de l\'enregistrement du note3", error)
+        }
+      );
+      this.notesService.addNotesSemester(this.note4,idDip).subscribe((notes)=>{
+          console.log("notes : ",notes);
+        },
+        (error)=>{
+          console.log("Erreur lors de l\'enregistrement du note4", error)
+        }
+      );
+      this.notesService.addNotesSemester(this.note5,idDip).subscribe((notes)=>{
+          console.log("notes : ",notes);
+        },
+        (error)=>{
+          console.log("Erreur lors de l\'enregistrement du note4", error)
+        }
+      );
+      this.notesService.addNotesSemester(this.note6,idDip).subscribe((notes)=>{
+          console.log("notes : ",notes);
+          this.router.navigateByUrl('/admin/acceuil');
+        },
+        (error)=>{
+          console.log("Erreur lors de l\'enregistrement du note4", error)
+        }
+      );
+    }
 
 
-
+  }
+  private idDip : number=1;
   private enregistrerDiplome(data: Diplome ) {
 
 
@@ -383,10 +471,10 @@ public candidatTest!:Candidat;
 
     this.diplomeService.addDiplome(data).subscribe(
       (diplome) => {
-        console.log('file save dipole ', diplome)
-
-        console.log('file Enregistrement réussi !',diplome);
-        this.router.navigateByUrl('/admin/acceuil')
+        console.log('file save dipole ', diplome);
+        this.idDip=diplome.id;
+        //this.enrigetrerNotes(this.idDip ,diplome);
+        this.router.navigateByUrl('/candidat/mesCandidatures')
       },
       (error) => {
 
